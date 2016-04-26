@@ -22,8 +22,23 @@ import java.util.List;
 public class Main{
 
     public static void main(String[] args) throws IOException {
+        EventCreator evcreator = new EventCreator();
+        Event event = evcreator.createEvent(
+          new DateTime("2016-05-28T09:00:00+02:00"),
+          new DateTime("2016-05-28T09:00:00+02:00"),
+          new DateTime("2016-05-28T10:00:00+02:00"),
+          "123456",
+          "PF2",
+          "Marco culo",
+          "567",
+          "T. Thomas",
+          "marco@costanza.michele",
+          "91011",
+          "008",
+          "0"
+        );
         MainCalendar rc = new MainCalendar();
-        rc.write();
+        rc.write(event);
     }
 
 }
