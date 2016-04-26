@@ -23,7 +23,7 @@ public class Main{
 
     public static void main(String[] args) throws IOException {
         MainCalendar rc = new MainCalendar();
-        rc.test(new String[0]);
+        rc.write();
     }
 
 }

@@ -85,8 +85,6 @@ public class MainCalendar {
     }
 
     public static void read() throws IOException {
-
-    public static void test(String[] args) throws IOException {
         // Build a new authorized API client service.
         // Note: Do not confuse this class with the
         //   com.google.api.services.calendar.model.Calendar class.
@@ -113,6 +111,13 @@ public class MainCalendar {
                 System.out.printf("%s (%s)\n", event.getSummary(), start);
             }
         }
+    }
+
+    public static void write() throws IOException{
+        // Build a new authorized API client service.
+        // Note: Do not confuse this class with the
+        //   com.google.api.services.calendar.model.Calendar class.
+        com.google.api.services.calendar.Calendar service = getCalendarService();
 
         Event event = new Event()
         .setSummary("Google I/O 2015")
