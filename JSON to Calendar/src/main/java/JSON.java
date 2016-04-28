@@ -19,7 +19,10 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 public class JSON {
 
     public static void main(String[] args) throws IOException {
-        //read json
+        //create ObjectMapper instance
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        //red json
         Employee emp = objectMapper.readValue(JSON.class.getResource("/test.json"), Employee.class);
 
         System.out.println("Employee Object\n"+emp);
