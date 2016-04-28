@@ -4,21 +4,21 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/free_rooms"
             android:icon="@drawable/ic_free_rooms"
             android:title="FreeRooms" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/by_dates"
             android:icon="@drawable/ic_by_dates"
             android:title="By Date" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/by_events"
             android:icon="@drawable/ic_by_events"
             android:title="By Event" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/by_rooms"
             android:icon="@drawable/by_rooms"
-            android:title="By Room" />
+            android:title="By Room"/>
     </group>
     <item android:title="Pensare a come toglierlo">
         <menu>
@@ -27,10 +27,11 @@
                 android:icon="@drawable/ic_menu_share"
                 android:title="Share" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/credit"
                 android:icon="@drawable/ic_credit"
                 android:title="Credits" />
         </menu>
     </item>
+    
 
 </menu>
