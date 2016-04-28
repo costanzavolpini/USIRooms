@@ -19,16 +19,8 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 public class JSON {
 
     public static void main(String[] args) throws IOException {
-
-        //read json file data to String
-        //URI uri = ;
-        byte[] jsonData = Files.readAllBytes(JSON.class.getResource("/test.json"));
-
-        //create ObjectMapper instance
-        ObjectMapper objectMapper = new ObjectMapper();
-
-        //convert json string to object
-        Employee emp = objectMapper.readValue(jsonData, Employee.class);
+        //read json
+        Employee emp = objectMapper.readValue(JSON.class.getResource("/test.json"), Employee.class);
 
         System.out.println("Employee Object\n"+emp);
 
