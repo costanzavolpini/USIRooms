@@ -12,8 +12,12 @@
     tools:context="com.usirooms.usirooms.freeRooms"
     tools:showIn="@layout/app_bar_free_rooms">
 
-    <TextView
+
+    <ExpandableListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:id="@+id/expandableListView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
