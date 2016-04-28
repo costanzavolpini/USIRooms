@@ -5,6 +5,7 @@
     android:background="@drawable/side_nav_bar"
     android:gravity="bottom"
     android:orientation="vertical"
+
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
     android:weightSum="1">
 
@@ -16,6 +17,7 @@
         android:text="@string/main_building"
         android:background="@mipmap/mainbuilding"
         android:layout_weight="0.50"
+        android:clickable="true"
         android:gravity="bottom|left" />
 
 </LinearLayout>
