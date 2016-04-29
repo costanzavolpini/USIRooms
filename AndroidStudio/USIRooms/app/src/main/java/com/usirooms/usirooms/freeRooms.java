@@ -1,5 +1,6 @@
 package com.usirooms.usirooms;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
@@ -43,7 +44,10 @@ public class freeRooms extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
-
+    public void open_by_rooms(MenuItem item){
+        Intent StartNewActivity = new Intent(freeRooms.this, byRooms.class);
+        startActivity(StartNewActivity);
+    }
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

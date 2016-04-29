@@ -18,6 +18,7 @@
         <item
             android:id="@+id/by_rooms"
             android:icon="@drawable/by_rooms"
+            android:onClick="open_by_rooms"
             android:title="By Room"/>
     </group>
     <item android:title="Pensare a come toglierlo">
