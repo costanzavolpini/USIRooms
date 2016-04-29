@@ -1,23 +1,36 @@
 {
-  "id": 123,
-  "name": "Pankaj",
-  "permanent": true,
-  "address": {
-    "street": "Albany Dr",
-    "city": "San Jose",
-    "zipcode": 95129
-  },
-  "phoneNumbers": [
-    123456,
-    987654
-  ],
-  "role": "Manager",
-  "cities": [
-    "Los Angeles",
-    "New York"
-  ],
-  "properties": {
-    "age": "29 years",
-    "salary": "1000 USD"
-  }
+    "data": [
+        {
+            "updated": "2016-04-13T08:59:44+0000",
+            "start": "2016-02-24T13:30:00+0000",
+            "end": "2016-02-24T15:15:00+0000",
+            "details": "",
+            "course": {
+                "id": 35253499,
+                "name_it": "Bachelor Project",
+                "name_en": "Bachelor Project",
+                "description_it": "<p>The purpose of the bachelor project is to give the student an opportunity to work independently to develop the solution to a significant (i.e. large) problem. The student must learn and demonstrate both independence and a systematic approach to problem solving. The number of credits is 18 ECTS; that is, the amount of work expected is equivalent to 3 typical bachelor-level courses.</p>\r\n<p>\r\n</p>\r\n<p>The students are expected to work throughout the semester under the supervision of their project advisor on the substance of the work. The students also meet regularly as a group with the Bachelor Project Coordinator to receive instructions about the purpose and mechanics of implementing a long-term project.</p>\r\n<p>&nbsp;</p>\r\n<p>At the end of the semester, the students produce:</p>\r\n<ul>\r\n    <li>A&nbsp;project report</li>\r\n    <li>A poster and poster presentation</li>\r\n    <li>\r\n    A product (if applicable) such as an algorithm, a software library, or application.</li>\r\n</ul>",
+                "description_en": "",
+                "semester_academic_year": "SP 2016",
+                "links": {
+                    "self": "http://search.usi.ch/api/course/35253499"
+                }
+            },
+            "place": {
+                "id": 1487,
+                "office": "Room 008",
+                "floor": "0",
+                "links": {
+                    "self": "http://search.usi.ch/api/place/1487",
+                    "schedules": "http://search.usi.ch/api/place/1487/schedules"
+                },
+                "building": {
+                    "name_it": "Stabile Informatica",
+                    "name_en": "Informatics Building",
+                    "address": "Via Buffi 13, 6904 Lugano",
+                    "venue": "Campus Lugano"
+                }
+            }
+        }
+    ]
 }

@@ -21,21 +21,36 @@ public class JSON {
     public static void main(String[] args) throws IOException {
         //create ObjectMapper instance
         ObjectMapper objectMapper = new ObjectMapper();
+        // //read JSON like DOM Parser
+        JsonNode root = objectMapper.readTree(JSON.class.getResource("/test.json"));
 
-        //red json
-        Employee emp = objectMapper.readValue(JSON.class.getResource("/test.json"), Employee.class);
 
-        System.out.println("Employee Object\n"+emp);
+        JsonNode dataNode = root.path("data");
+        // Data node
+        for (JsonNode dataElement : dataNode) {
+            System.out.println(dataElement.path("updated"));
+		}
 
-        //convert Object to json string
-        Employee emp1 = createEmployee();
-        //configure Object mapper for pretty print
-        objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
 
-        //writing to console, can write to any output stream such as file
-        StringWriter stringEmp = new StringWriter();
-        objectMapper.writeValue(stringEmp, emp1);
-        System.out.println("Employee JSON is\n"+stringEmp);
+        //
+        // JsonNode idNode = rootNode.path("data");
+        //
+        // System.out.println("data = "+idNode.asText());
+        //
+        // JsonNode phoneNosNode = rootNode.path("data");
+        // Iterator<JsonNode> elements = phoneNosNode.elements();
+        // while(elements.hasNext()){
+        //     JsonNode phone = elements.next();
+        //     System.out.println("lecturers = "+phone.asText());
+        // }
+        // test = root.path("id").asText();
+		// JsonNode nameNode = root.path("name");
+        //
+        // System.out.println(nameNode.path("first"));
+        //
+        // JsonNode contactNode = root.path("contact");
+
+
     }
 
     public static Employee createEmployee() {
