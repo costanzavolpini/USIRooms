@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
+import java.util.ArrayList;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -19,66 +19,59 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 public class JSON {
 
     public static void main(String[] args) throws IOException {
+        // Array for all the data
+        ArrayList<JsonToEvent> data = new ArrayList<JsonToEvent>();
+
         //create ObjectMapper instance
         ObjectMapper objectMapper = new ObjectMapper();
+
         // //read JSON like DOM Parser
         JsonNode root = objectMapper.readTree(JSON.class.getResource("/test.json"));
 
 
         JsonNode dataNode = root.path("data");
         // Data node
+        int dataIndex = 0;
         for (JsonNode dataElement : dataNode) {
-            System.out.println(dataElement.path("updated"));
+            data.add(new JsonToEvent());
+
+            // UPDATE: update
+            data.get(dataIndex).setUpdate(dataElement.path("updated").asText());
+            // UPDATE: start
+            data.get(dataIndex).setStart(dataElement.path("start").asText());
+            // UPDATE: end
+            data.get(dataIndex).setEnd(dataElement.path("end").asText());
+
+            // Enter in the course
+            JsonNode courseNode = dataElement.path("course");
+
+            data.get(dataIndex).setIdEvent(courseNode.path("id").asText());
+            data.get(dataIndex).setNameEvent(courseNode.path("name_en").asText());
+            data.get(dataIndex).setDescription(courseNode.path("description_it").asText());
+
+            // Enter in the Lectures node
+            JsonNode lecturesNode = courseNode.path("lecturers");
+            // Enter in lecture node
+            JsonNode dataNodeLectureNode = lecturesNode.path("data");
+
+            if (dataNodeLectureNode.size() > 0){
+                JsonNode dataElementLectureNode = dataNodeLectureNode.get(0);
+
+                JsonNode personNode = dataElementLectureNode.path("person");
+                data.get(dataIndex).setIdOrganizer(personNode.path("id").asText());
+                data.get(dataIndex).setNameOrganizer(personNode.path("short_name").asText());
+
+                JsonNode emailsNode = personNode.path("emails");
+                data.get(dataIndex).setEmailOrganizer(emailsNode.get(0).asText());
+            }
+
+            JsonNode placeNode = dataElement.path("place");
+            data.get(dataIndex).setIdRoom(placeNode.path("id").asText());
+            data.get(dataIndex).setNameRoom(placeNode.path("office").asText());
+            data.get(dataIndex).setFloor(placeNode.path("floor").asText());
+
+
+            dataIndex++;
 		}
-
-
-        //
-        // JsonNode idNode = rootNode.path("data");
-        //
-        // System.out.println("data = "+idNode.asText());
-        //
-        // JsonNode phoneNosNode = rootNode.path("data");
-        // Iterator<JsonNode> elements = phoneNosNode.elements();
-        // while(elements.hasNext()){
-        //     JsonNode phone = elements.next();
-        //     System.out.println("lecturers = "+phone.asText());
-        // }
-        // test = root.path("id").asText();
-		// JsonNode nameNode = root.path("name");
-        //
-        // System.out.println(nameNode.path("first"));
-        //
-        // JsonNode contactNode = root.path("contact");
-
-
     }
-
-    public static Employee createEmployee() {
-
-        Employee emp = new Employee();
-        emp.setId(100);
-        emp.setName("David");
-        emp.setPermanent(false);
-        emp.setPhoneNumbers(new long[] { 123456, 987654 });
-        emp.setRole("Manager");
-
-        Address add = new Address();
-        add.setCity("Bangalore");
-        add.setStreet("BTM 1st Stage");
-        add.setZipcode(560100);
-        emp.setAddress(add);
-
-        List<String> cities = new ArrayList<String>();
-        cities.add("Los Angeles");
-        cities.add("New York");
-        emp.setCities(cities);
-
-        Map<String, String> props = new HashMap<String, String>();
-        props.put("salary", "1000 Rs");
-        props.put("age", "28 years");
-        emp.setProperties(props);
-
-        return emp;
-    }
-
 }

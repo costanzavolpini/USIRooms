@@ -16,4 +16,4 @@ include 'api'
 include 'services:webservice'
 */
 
-rootProject.name = 'FUCKING FUCK FUCK SHIT CALENDAR'
+rootProject.name = 'JSON to Calendar'

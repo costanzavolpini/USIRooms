@@ -14,6 +14,78 @@
                 "semester_academic_year": "SP 2016",
                 "links": {
                     "self": "http://search.usi.ch/api/course/35253499"
+                },
+                "lecturers": {
+                    "data": [
+                        {
+                            "person": {
+                                "id": "414fbe48da94f28c810b0e4f1890647f",
+                                "first_name": "Mehdi",
+                                "last_name": "Jazayeri",
+                                "short_name": "Jazayeri M.",
+                                "emails": [
+                                    "mehdi.jazayeri@usi.ch"
+                                ],
+                                "links": {
+                                    "self": "http://search.usi.ch/api/people/414fbe48da94f28c810b0e4f1890647f",
+                                    "courses": "http://search.usi.ch/api/people/414fbe48da94f28c810b0e4f1890647f/courses",
+                                    "publications": "http://search.usi.ch/api/people/414fbe48da94f28c810b0e4f1890647f/publications",
+                                    "projects": "http://search.usi.ch/api/people/414fbe48da94f28c810b0e4f1890647f/projects",
+                                    "schedules": "http://search.usi.ch/api/people/414fbe48da94f28c810b0e4f1890647f/schedules"
+                                },
+                                "phones": {
+                                    "data": [
+                                        {
+                                            "internal": "4656",
+                                            "official": "+41 58 666 4656"
+                                        }
+                                    ],
+                                    "meta": {
+                                        "count": 1
+                                    }
+                                }
+                            },
+                            "role": {
+                                "name_it_m": "Docente titolare del corso",
+                                "name_it_f": "Docente titolare del corso",
+                                "name_en_m": "Course director",
+                                "name_en_f": "Course director"
+                        }
+                        },
+                        {
+                            "person": {
+                                "id": "6e9199727cd3a79d8fe1fddec0f623d0",
+                                "first_name": "Andrés Felipe",
+                                "last_name": "Valencia Patiño",
+                                "short_name": "Valencia Patiño A. F.",
+                                "emails": [
+                                    "andres.felipe.valencia.patino@usi.ch"
+                                ],
+                                "links": {
+                                    "self": "http://search.usi.ch/api/people/6e9199727cd3a79d8fe1fddec0f623d0",
+                                    "courses": "http://search.usi.ch/api/people/6e9199727cd3a79d8fe1fddec0f623d0/courses",
+                                    "publications": "http://search.usi.ch/api/people/6e9199727cd3a79d8fe1fddec0f623d0/publications",
+                                    "projects": "http://search.usi.ch/api/people/6e9199727cd3a79d8fe1fddec0f623d0/projects",
+                                    "schedules": "http://search.usi.ch/api/people/6e9199727cd3a79d8fe1fddec0f623d0/schedules"
+                                },
+                                "phones": {
+                                    "data": [],
+                                    "meta": {
+                                        "count": 0
+                                    }
+                                }
+                            },
+                            "role": {
+                                "name_it_m": "Assistente",
+                                "name_it_f": "Assistente",
+                                "name_en_m": "Assistant",
+                                "name_en_f": "Assistant"
+                            }
+                        }
+                    ],
+                    "meta": {
+                        "count": 2
+                    }
                 }
             },
             "place": {
