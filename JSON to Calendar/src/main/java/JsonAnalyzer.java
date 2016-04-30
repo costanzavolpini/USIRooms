@@ -15,39 +15,44 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
+import com.google.api.services.calendar.model.*;
 
-public class JSON {
 
-    public static void main(String[] args) throws IOException {
+
+public class JsonAnalyzer {
+
+    public static ArrayList<Event> analyze(String file_name) throws IOException {
         // Array for all the data
-        ArrayList<JsonToEvent> data = new ArrayList<JsonToEvent>();
+        ArrayList<Event> events = new ArrayList<Event>();
 
         //create ObjectMapper instance
         ObjectMapper objectMapper = new ObjectMapper();
 
         // //read JSON like DOM Parser
-        JsonNode root = objectMapper.readTree(JSON.class.getResource("/test.json"));
+        JsonNode root = objectMapper.readTree(JsonAnalyzer.class.getResource("/" + file_name));
+
+        JsonToEvent data;
 
 
         JsonNode dataNode = root.path("data");
         // Data node
         int dataIndex = 0;
         for (JsonNode dataElement : dataNode) {
-            data.add(new JsonToEvent());
+            data = new JsonToEvent();
 
             // UPDATE: update
-            data.get(dataIndex).setUpdate(dataElement.path("updated").asText());
+            data.setUpdate(dataElement.path("updated").asText());
             // UPDATE: start
-            data.get(dataIndex).setStart(dataElement.path("start").asText());
+            data.setStart(dataElement.path("start").asText());
             // UPDATE: end
-            data.get(dataIndex).setEnd(dataElement.path("end").asText());
+            data.setEnd(dataElement.path("end").asText());
 
             // Enter in the course
             JsonNode courseNode = dataElement.path("course");
 
-            data.get(dataIndex).setIdEvent(courseNode.path("id").asText());
-            data.get(dataIndex).setNameEvent(courseNode.path("name_en").asText());
-            data.get(dataIndex).setDescription(courseNode.path("description_it").asText());
+            data.setIdEvent(courseNode.path("id").asText());
+            data.setNameEvent(courseNode.path("name_en").asText());
+            data.setDescription(courseNode.path("description_it").asText());
 
             // Enter in the Lectures node
             JsonNode lecturesNode = courseNode.path("lecturers");
@@ -58,20 +63,23 @@ public class JSON {
                 JsonNode dataElementLectureNode = dataNodeLectureNode.get(0);
 
                 JsonNode personNode = dataElementLectureNode.path("person");
-                data.get(dataIndex).setIdOrganizer(personNode.path("id").asText());
-                data.get(dataIndex).setNameOrganizer(personNode.path("short_name").asText());
+                data.setIdOrganizer(personNode.path("id").asText());
+                data.setNameOrganizer(personNode.path("short_name").asText());
 
                 JsonNode emailsNode = personNode.path("emails");
-                data.get(dataIndex).setEmailOrganizer(emailsNode.get(0).asText());
+                data.setEmailOrganizer(emailsNode.get(0).asText());
             }
 
             JsonNode placeNode = dataElement.path("place");
-            data.get(dataIndex).setIdRoom(placeNode.path("id").asText());
-            data.get(dataIndex).setNameRoom(placeNode.path("office").asText());
-            data.get(dataIndex).setFloor(placeNode.path("floor").asText());
+            data.setIdRoom(placeNode.path("id").asText());
+            data.setNameRoom(placeNode.path("office").asText());
+            data.setFloor(placeNode.path("floor").asText());
 
+            events.add(data.eventCreator());
 
             dataIndex++;
 		}
+
+        return events;
     }
 }

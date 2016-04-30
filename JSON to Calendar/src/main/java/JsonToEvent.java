@@ -1,6 +1,25 @@
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.List;
+
+import com.google.api.client.auth.oauth2.Credential;
+import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
+import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
+import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
+import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
+import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
+import com.google.api.client.http.HttpTransport;
+import com.google.api.client.json.jackson2.JacksonFactory;
+import com.google.api.client.json.JsonFactory;
+import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.client.util.DateTime;
+import com.google.api.services.calendar.CalendarScopes;
+import com.google.api.services.calendar.model.*;
 
 public class JsonToEvent{
     private  DateTime update;
@@ -23,102 +42,84 @@ public class JsonToEvent{
     }
 
 
+    public Event eventCreator(){
+        Event event = new Event()
+
+        // Event id, name and description
+        .setSummary(idEvent + "_" + nameEvent)
+        .setDescription(description)
+
+        // Room id, name and floor
+        .setLocation(idRoom + "_" + nameRoom + "_" + floor)
+
+        // Event update, begin, end
+        .setUpdated(update);
+        EventDateTime begin = new EventDateTime()
+            .setDateTime(start)
+            .setTimeZone("Europe/Zurich");
+        event.setStart(begin);
+        EventDateTime ending = new EventDateTime()
+            .setDateTime(end)
+            .setTimeZone("Europe/Zurich");
+        event.setEnd(ending);
+
+        // Organizer id, name and emails
+        Event.Organizer organizer = new Event.Organizer()
+            .setId(idOrganizer)
+            .setDisplayName(nameOrganizer)
+            .setEmail(emailOrganizer);
+        event.setOrganizer(organizer);
+
+        return event;
+    }
+
 
     public void setUpdate(String update){
         this.update = StringToDateTime(update);
-        System.out.println(update);
     }
 
     public void setStart(String start){
         this.start = StringToDateTime(start);
-        System.out.println(start);
     }
 
     public void setEnd(String end){
         this.end = StringToDateTime(end);
-        System.out.println(end);
     }
 
     public void setIdEvent(String idEvent){
         this.idEvent = idEvent;
-        System.out.println(idEvent);
     }
 
     public void setNameEvent(String nameEvent){
         this.nameEvent = nameEvent;
-        System.out.println(nameEvent);
     }
 
     public void setDescription(String description){
         this.description = description;
-        System.out.println(description);
     }
 
     public void setIdOrganizer(String idOrganizer){
         this.idOrganizer = idOrganizer;
-        System.out.println(idOrganizer);
     }
 
     public void setNameOrganizer(String nameOrganizer){
         this.nameOrganizer = nameOrganizer;
-        System.out.println(nameOrganizer);
     }
 
     public void setEmailOrganizer(String emailOrganizer){
         this.emailOrganizer = emailOrganizer;
-        System.out.println(emailOrganizer);
     }
 
     public void setIdRoom(String idRoom){
         this.idRoom = idRoom;
-        System.out.println(idRoom);
     }
 
     public void setNameRoom(String nameRoom){
         this.nameRoom = nameRoom;
-        System.out.println(nameRoom);
     }
 
     public void setFloor(String floor){
         this.floor = floor;
-        System.out.println(floor);
     }
 
-
-
-    public DateTime getUpdate(){
-        return update;
-    }
-
-    public DateTime getStart(){
-        return start;
-    }
-
-    public DateTime getEnd(){
-        return end;
-    }
-
-    public String getIdEvent(){
-        return idEvent;
-    }
-
-    public String getNameEvent(){
-        return nameEvent;
-    }
-
-    public String getDescription(){
-        return description;
-    }
-
-    public String getIdOrganizer(){
-        return idOrganizer;
-    }
-
-    public String getNameOrganizer(){
-        return nameOrganizer;
-    }
-
-    public String getEmailOrganizer(){
-        return emailOrganizer;
-    }
 }

@@ -18,6 +18,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.List;
+import java.util.ArrayList;
 
 public class MainCalendar {
     /** Application name. */
@@ -113,17 +114,17 @@ public class MainCalendar {
         }
     }
 
-    public static void write(Event event) throws IOException{
+    public static void write(ArrayList<Event> events) throws IOException{
         // Build a new authorized API client service.
         // Note: Do not confuse this class with the
         //   com.google.api.services.calendar.model.Calendar class.
         com.google.api.services.calendar.Calendar service = getCalendarService();
 
-
-
         String calendarId = "psl5ie1jhug7m9geanaevl6oi0@group.calendar.google.com";
-        event = service.events().insert(calendarId, event).execute();
-        System.out.printf("Event created: %s\n", event.getHtmlLink());
+        for (Event event : events){
+            event = service.events().insert(calendarId, event).execute();
+            System.out.printf("Event created: %s\n", event.getHtmlLink());
+        }
     }
 
 }
