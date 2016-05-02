@@ -37,7 +37,7 @@ public class JsonToEvent{
 
 
     public DateTime StringToDateTime(String date){
-        date = date.substring(0, date.length() - 4) + "02:00";
+        date = date.substring(0, date.length() - 4) + "01:00";
         return new DateTime(date);
     }
 

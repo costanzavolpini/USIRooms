@@ -27,27 +27,10 @@ public class Main{
         // JSON j = new JSON();
         // j.main(new String[0]);
 
-        ArrayList<Event> events = JsonAnalyzer.analyze("nothing.json");
+        ArrayList<Event> events = JsonAnalyzer.analyze("bachelor_inf_3_year.json");
         MainCalendar rc = new MainCalendar();
         rc.write(events);
 
-        // EventCreator evcreator = new EventCreator();
-        // Event event = evcreator.createEvent(
-        //   new DateTime("2016-05-28T09:00:00+02:00"),
-        //   new DateTime("2016-05-28T09:00:00+02:00"),
-        //   new DateTime("2016-05-28T10:00:00+02:00"),
-        //   "123456",
-        //   "PF2",
-        //   "Marco culo",
-        //   "567",
-        //   "T. Thomas",
-        //   "marco@costanza.michele",
-        //   "91011",
-        //   "008",
-        //   "0"
-        // );
-        // MainCalendar rc = new MainCalendar();
-        // rc.write(event);
     }
 
 }
