@@ -6,14 +6,17 @@
         <item
             android:id="@+id/free_rooms"
             android:icon="@drawable/ic_free_rooms"
+            android:onClick="open_freerooms"
             android:title="FreeRooms" />
         <item
             android:id="@+id/by_dates"
             android:icon="@drawable/ic_by_dates"
+            android:onClick="open_by_dates"
             android:title="By Date" />
         <item
             android:id="@+id/by_events"
             android:icon="@drawable/ic_by_events"
+            android:onClick="open_by_events"
             android:title="By Event" />
         <item
             android:id="@+id/by_rooms"

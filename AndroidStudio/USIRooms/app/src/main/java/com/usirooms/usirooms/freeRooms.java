@@ -64,6 +64,21 @@ public class freeRooms extends AppCompatActivity
         startActivity(StartNewActivity);
     }
 
+    public void open_by_dates(MenuItem item) {
+        Intent StartNewActivity = new Intent(freeRooms.this, byDates.class);
+        startActivity(StartNewActivity);
+    }
+
+    public void open_by_events(MenuItem item) {
+        Intent StartNewActivity = new Intent(freeRooms.this, byEvents.class);
+        startActivity(StartNewActivity);
+    }
+
+    public void open_freerooms(MenuItem item) {
+        Intent StartNewActivity = new Intent(freeRooms.this, freeRooms.class);
+        startActivity(StartNewActivity);
+    }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

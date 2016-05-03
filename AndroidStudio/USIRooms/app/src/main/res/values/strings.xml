@@ -11,4 +11,6 @@
     <string name="large_text">
        "Hello"
     </string>
+    <string name="title_activity_by_dates">By Date</string>
+    <string name="title_activity_by_events">By Event</string>
 </resources>
