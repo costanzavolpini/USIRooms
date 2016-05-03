@@ -13,4 +13,6 @@
     </string>
     <string name="title_activity_by_dates">By Date</string>
     <string name="title_activity_by_events">By Event</string>
+    <string name="nameroom"> Room 008 </string>
+    <string name="time"> 12:00-16:00 </string>
 </resources>
