@@ -106,6 +106,18 @@ public class MainCalendar {
         return items;
     }
 
+    public static boolean equalsEvent(Event e1, Event e2){
+        if(e1.getSummary().equals(e1.getSummary()) &&
+        e1.getDescription().replaceAll("\n", "").replaceAll("&nbsp;","").equals(e2.getDescription().replaceAll("\n", "").replaceAll("&nbsp;","")) &&
+        e1.getLocation().equals(e2.getLocation()) &&
+        //e1.getSource().equals(e2.getSource()) &&
+        e1.getStart().equals(e2.getStart()) &&
+        e1.getEnd().equals(e2.getEnd())){
+            return true;
+        }
+        return false;
+    }
+
     public static Event corrispondingEvent(Event event, List<Event> calendarEvents) throws IOException{
         if (calendarEvents.size() == 0) {
             return null;
@@ -116,7 +128,6 @@ public class MainCalendar {
                 if (event.getSummary().split("_")[0].equals(calendarEvent.getSummary().split("_")[0])){
                     return calendarEvent;
                 }
-                //System.out.printf("%s (%s) (%s) (%s)\n", event.getSummary(), start, event.getUpdated(), event.getStart());
             }
             return null;
         }
@@ -127,37 +138,55 @@ public class MainCalendar {
         service.events().delete(calendarId, event.getId()).execute();
     }
 
-    public static void update(Event event) throws IOException{
-        DateTime start = event.getStart().getDateTime();
-        if (start == null) {
-            start = event.getStart().getDate();
-        }
-        DateTime end = event.getEnd().getDateTime();
-        if (start == null) {
-            start = event.getEnd().getDate();
-        }
-
-        Event calendarEvent = corrispondingEvent(event, search (start, end));
-        if (calendarEvent != null){
-            delete(calendarEvent);
-            System.out.println("Updating event...");
+    public static boolean toUpdate(Event event, Event calendarEvent) throws IOException{
+        if (calendarEvent == null || !equalsEvent(calendarEvent,event)){
+            if(calendarEvent != null){
+                System.out.println("Updating event...");
+                System.out.println(event.getStart());
+                System.out.println("Finish");
+                System.out.println(calendarEvent.getStart());
+            }
+            return true;
         }else{
             System.out.println("No need to update the event");
+            return false;
         }
     }
 
-    public static void write(ArrayList<Event> events) throws IOException{
+    public static void update(ArrayList<Event> events, boolean force) throws IOException{
+        // force : Force the update of all the events
         int i = 0;
         for (Event event : events){
-            update(event);
 
+            DateTime start = event.getStart().getDateTime();
+            if (start == null) {
+                start = event.getStart().getDate();
+            }
+            DateTime end = event.getEnd().getDateTime();
+            if (start == null) {
+                start = event.getEnd().getDate();
+            }
+            // Searching corrisponding events
+            Event calendarEvent = corrispondingEvent(event, search (start, end));
+
+
+            if(force || toUpdate(event, calendarEvent)){
+                if(calendarEvent != null){
+                    delete(calendarEvent);
+                }
+                write(event);
+                i++;
+            }
+
+        }
+
+        System.out.println(i + " events updated");
+    }
+
+    public static void write(Event event) throws IOException{
             event = service.events().insert(calendarId, event).execute();
             System.out.printf("Event created: %s\n", event.getHtmlLink());
 
-            i++;
-        }
-
-        System.out.println(i + " events inserted correctly");
     }
 
 }

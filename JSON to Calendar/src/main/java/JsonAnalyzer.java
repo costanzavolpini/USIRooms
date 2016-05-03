@@ -40,8 +40,6 @@ public class JsonAnalyzer {
         for (JsonNode dataElement : dataNode) {
             data = new JsonToEvent();
 
-            // UPDATE: update
-            data.setUpdate(dataElement.path("updated").asText());
             // UPDATE: start
             data.setStart(dataElement.path("start").asText());
             // UPDATE: end
@@ -73,7 +71,6 @@ public class JsonAnalyzer {
             JsonNode placeNode = dataElement.path("place");
             data.setIdRoom(placeNode.path("id").asText());
             data.setNameRoom(placeNode.path("office").asText());
-            data.setFloor(placeNode.path("floor").asText());
 
             events.add(data.eventCreator());
 

@@ -27,9 +27,9 @@ public class Main{
         // JSON j = new JSON();
         // j.main(new String[0]);
 
-        ArrayList<Event> events = JsonAnalyzer.analyze("bachelor_inf_3_year.json");
+        ArrayList<Event> events = JsonAnalyzer.analyze("test.json");
         MainCalendar rc = new MainCalendar();
-        rc.write(events);
+        rc.update(events, false);
 
     }
 

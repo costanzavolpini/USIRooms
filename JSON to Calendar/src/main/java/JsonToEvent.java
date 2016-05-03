@@ -22,7 +22,6 @@ import com.google.api.services.calendar.CalendarScopes;
 import com.google.api.services.calendar.model.*;
 
 public class JsonToEvent{
-    private  DateTime update;
     private  DateTime start;
     private  DateTime end;
     private  String idEvent;
@@ -33,11 +32,10 @@ public class JsonToEvent{
     private  String emailOrganizer;
     private  String idRoom;
     private  String nameRoom;
-    private  String floor;
 
 
     public DateTime StringToDateTime(String date){
-        date = date.substring(0, date.length() - 4) + "01:00";
+        date = date.substring(0, date.length() - 5) + "Z";
         return new DateTime(date);
     }
 
@@ -50,33 +48,26 @@ public class JsonToEvent{
         .setDescription(description)
 
         // Room id, name and floor
-        .setLocation(idRoom + "_" + nameRoom + "_" + floor)
+        .setLocation(idRoom + "_" + nameRoom);
+        Event.Source source = new Event.Source()
+        .setTitle(idOrganizer + "_" + nameOrganizer + "_" + emailOrganizer)
+        .setUrl("http://usi.ch");
+        event.setSource(source);
 
-        // Event update, begin, end
-        .setUpdated(update);
+        // Event begin, end
         EventDateTime begin = new EventDateTime()
-            .setDateTime(start)
-            .setTimeZone("Europe/Zurich");
+            .setDateTime(start);
+            //.setTimeZone("Europe/Zurich");
         event.setStart(begin);
         EventDateTime ending = new EventDateTime()
-            .setDateTime(end)
-            .setTimeZone("Europe/Zurich");
+            .setDateTime(end);
+            //.setTimeZone("Europe/Zurich");
         event.setEnd(ending);
-
-        // Organizer id, name and emails
-        Event.Organizer organizer = new Event.Organizer()
-            .setId(idOrganizer)
-            .setDisplayName(nameOrganizer)
-            .setEmail(emailOrganizer);
-        event.setOrganizer(organizer);
 
         return event;
     }
 
 
-    public void setUpdate(String update){
-        this.update = StringToDateTime(update);
-    }
 
     public void setStart(String start){
         this.start = StringToDateTime(start);
@@ -116,10 +107,6 @@ public class JsonToEvent{
 
     public void setNameRoom(String nameRoom){
         this.nameRoom = nameRoom;
-    }
-
-    public void setFloor(String floor){
-        this.floor = floor;
     }
 
 }
