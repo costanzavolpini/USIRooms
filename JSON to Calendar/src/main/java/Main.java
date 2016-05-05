@@ -27,10 +27,15 @@ public class Main{
         // JSON j = new JSON();
         // j.main(new String[0]);
 
-        ArrayList<Event> events = JsonAnalyzer.analyze("test.json");
+        ArrayList<Event> events = JsonAnalyzer.analyze("bachelor_inf_3_year.json");
         MainCalendar rc = new MainCalendar();
-        rc.update(events, false);
+        //rc.update(events, false, "psl5ie1jhug7m9geanaevl6oi0@group.calendar.google.com");
 
+        List<Event> r = rc.search(new DateTime("2016-02-13T08:59:44Z"), new DateTime("2016-10-13T08:59:44Z"), "psl5ie1jhug7m9geanaevl6oi0@group.calendar.google.com");
+
+        for (Event a : r){
+            System.out.println(a);
+        }
     }
 
 }

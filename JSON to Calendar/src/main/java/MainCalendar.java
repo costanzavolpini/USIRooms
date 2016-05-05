@@ -43,7 +43,7 @@ public class MainCalendar {
      */
     private static final List<String> SCOPES = Arrays.asList(CalendarScopes.CALENDAR);
 
-    private static String calendarId;
+    //private static String calendarId;
 
     private static com.google.api.services.calendar.Calendar service;
 
@@ -51,7 +51,7 @@ public class MainCalendar {
         try {
             HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
             DATA_STORE_FACTORY = new FileDataStoreFactory(DATA_STORE_DIR);
-            calendarId = "psl5ie1jhug7m9geanaevl6oi0@group.calendar.google.com";
+            //calendarId = "psl5ie1jhug7m9geanaevl6oi0@group.calendar.google.com";
 
             // Build a new authorized API client service.
             // Note: Do not confuse this class with the
@@ -96,13 +96,22 @@ public class MainCalendar {
                 .build();
     }
 
-    public static List<Event> search(DateTime start, DateTime end) throws IOException {
+
+
+
+
+    public static List<Event> search(DateTime start, DateTime end, String calendarId) throws IOException {
         Events events = service.events().list(calendarId)
             .setTimeMin(start)
             .setTimeMax(end)
+            .setTimeZone("UTC")
+            .setMaxResults(2500)
             .setSingleEvents(true)
             .execute();
         List<Event> items = events.getItems();
+
+
+        System.out.println(items.size());
         return items;
     }
 
@@ -133,7 +142,7 @@ public class MainCalendar {
         }
     }
 
-    public static void delete(Event event) throws IOException{
+    public static void delete(Event event, String calendarId) throws IOException{
         System.out.println("Deleting an event: " + event.getId());
         service.events().delete(calendarId, event.getId()).execute();
     }
@@ -142,9 +151,9 @@ public class MainCalendar {
         if (calendarEvent == null || !equalsEvent(calendarEvent,event)){
             if(calendarEvent != null){
                 System.out.println("Updating event...");
-                System.out.println(event.getStart());
-                System.out.println("Finish");
-                System.out.println(calendarEvent.getStart());
+                // System.out.println(event.getStart());
+                // System.out.println("Finish");
+                // System.out.println(calendarEvent.getStart());
             }
             return true;
         }else{
@@ -153,7 +162,7 @@ public class MainCalendar {
         }
     }
 
-    public static void update(ArrayList<Event> events, boolean force) throws IOException{
+    public static void update(ArrayList<Event> events, boolean force, String calendarId) throws IOException{
         // force : Force the update of all the events
         int i = 0;
         for (Event event : events){
@@ -167,14 +176,14 @@ public class MainCalendar {
                 start = event.getEnd().getDate();
             }
             // Searching corrisponding events
-            Event calendarEvent = corrispondingEvent(event, search (start, end));
+            Event calendarEvent = corrispondingEvent(event, search (start, end, calendarId));
 
 
             if(force || toUpdate(event, calendarEvent)){
                 if(calendarEvent != null){
-                    delete(calendarEvent);
+                    delete(calendarEvent, calendarId);
                 }
-                write(event);
+                write(event, calendarId);
                 i++;
             }
 
@@ -183,7 +192,7 @@ public class MainCalendar {
         System.out.println(i + " events updated");
     }
 
-    public static void write(Event event) throws IOException{
+    public static void write(Event event, String calendarId) throws IOException{
             event = service.events().insert(calendarId, event).execute();
             System.out.printf("Event created: %s\n", event.getHtmlLink());
 
