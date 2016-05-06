@@ -24,18 +24,36 @@ public class Main{
 
     public static void main(String[] args) throws IOException {
 
-        // JSON j = new JSON();
-        // j.main(new String[0]);
+        List<Event> listAnalize = new ArrayList<Event>();
+        List<Event> events = new ArrayList<Event>();
 
-        ArrayList<Event> events = JsonAnalyzer.analyze("bachelor_inf_3_year.json");
-        MainCalendar rc = new MainCalendar();
-        //rc.update(events, false, "psl5ie1jhug7m9geanaevl6oi0@group.calendar.google.com");
+        ArrayList<String> jsonFiles = new ArrayList<String>();
+        jsonFiles.add("bachelor_inf_3_year.json");
 
-        List<Event> r = rc.search(new DateTime("2016-02-13T08:59:44Z"), new DateTime("2016-10-13T08:59:44Z"), "psl5ie1jhug7m9geanaevl6oi0@group.calendar.google.com");
-
-        for (Event a : r){
-            System.out.println(a);
+        for (String jsonFile : jsonFiles){
+            listAnalize = JsonAnalyzer.analyze(jsonFile);
+            events.addAll(listAnalize);
         }
+
+        ArrayList<UsiEvent> usiEvents = new ArrayList<UsiEvent>();
+        usiEvents.add(new UsiEvent("vtj0r7h12jfpjvkcagddaam3jc@group.calendar.google.com", 6, "Room 003"));
+        usiEvents.add(new UsiEvent("4uldjdn9bf00aqger105crd5bc@group.calendar.google.com", 6, "Room 004"));
+        usiEvents.add(new UsiEvent("rkm9cupl0js8rinfmrtvek9714@group.calendar.google.com", 6, "Room 006"));
+        usiEvents.add(new UsiEvent("7ms1f85tgr02ho81m7n6s28scs@group.calendar.google.com", 6, "Room 007"));
+        usiEvents.add(new UsiEvent("juuikibcrm8rqaut36bn0n6i6g@group.calendar.google.com", 6, "Room 008"));
+        usiEvents.add(new UsiEvent("8fu02csfbnnpfl7c08tg2r3ac8@group.calendar.google.com", 6, "Room 013"));
+
+
+        for (UsiEvent usiEvent : usiEvents){
+            listAnalize = usiEvent.getEvents();
+            events.addAll(listAnalize);
+        }
+
+        System.out.println("Total events loaded:" + events.size());
+
+
+
+
     }
 
 }

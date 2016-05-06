@@ -20,7 +20,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 
-public class MainCalendar {
+public class GoogleCalendar {
     /** Application name. */
     private static final String APPLICATION_NAME = "Google Calendar API Java Quickstart";
 
@@ -71,7 +71,7 @@ public class MainCalendar {
      */
     public static Credential authorize() throws IOException {
         // Load client secrets.
-        InputStream in = MainCalendar.class.getResourceAsStream("/client_secret.json");
+        InputStream in = GoogleCalendar.class.getResourceAsStream("/client_secret.json");
         GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
 
         // Build flow and trigger user authorization request.
@@ -107,11 +107,9 @@ public class MainCalendar {
             .setTimeZone("UTC")
             .setMaxResults(2500)
             .setSingleEvents(true)
+            .setOrderBy("startTime")
             .execute();
         List<Event> items = events.getItems();
-
-
-        System.out.println(items.size());
         return items;
     }
 

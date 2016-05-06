@@ -56,12 +56,12 @@ public class JsonToEvent{
 
         // Event begin, end
         EventDateTime begin = new EventDateTime()
-            .setDateTime(start);
-            //.setTimeZone("Europe/Zurich");
+            .setDateTime(start)
+            .setTimeZone("Europe/Zurich");
         event.setStart(begin);
         EventDateTime ending = new EventDateTime()
-            .setDateTime(end);
-            //.setTimeZone("Europe/Zurich");
+            .setDateTime(end)
+            .setTimeZone("Europe/Zurich");
         event.setEnd(ending);
 
         return event;

@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.ArrayList;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -21,9 +20,9 @@ import com.google.api.services.calendar.model.*;
 
 public class JsonAnalyzer {
 
-    public static ArrayList<Event> analyze(String file_name) throws IOException {
+    public static List<Event> analyze(String file_name) throws IOException {
         // Array for all the data
-        ArrayList<Event> events = new ArrayList<Event>();
+        List<Event> events = new ArrayList<Event>();
 
         //create ObjectMapper instance
         ObjectMapper objectMapper = new ObjectMapper();
@@ -76,7 +75,7 @@ public class JsonAnalyzer {
 
             dataIndex++;
 		}
-
+        System.out.println(dataIndex + " events fetched from \"" + file_name + "\" JSON file");
         return events;
     }
 }
