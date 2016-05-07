@@ -25,20 +25,26 @@ public class UsiEvent{
 
         this.events = GoogleCalendar.search(start, end, calendarId);
 
-        roomChanger();
-        nameChanger();
+        changer();
         System.out.println(events.size() + " events fetched from the calendar of " + room);
     }
 
-    public void roomChanger(){
+    public void changer(){
         for (Event event : events){
             event.setLocation(room);
-        }
-    }
 
-    public void nameChanger(){
+            if (event.getStart().getDateTime() == null){
+                EventDateTime begin = new EventDateTime()
+                    .setDateTime(new DateTime(event.getStart().getDate() + "T00:00:00.000Z"))
+                    .setTimeZone("Europe/Zurich");
+                event.setStart(begin);
 
-        for (Event event : events){
+                EventDateTime end = new EventDateTime()
+                    .setDateTime(new DateTime(event.getEnd().getDate() + "T23:59:59.000Z"))
+                    .setTimeZone("Europe/Zurich");
+                event.setEnd(end);
+            }
+
             String[] parts = event.getSummary().split("[\\(\\)]");
             if (parts.length == 2){
 
