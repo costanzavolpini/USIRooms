@@ -19,9 +19,9 @@ public class UsiEvent{
         this.room = room;
 
         // end X mounths after
-        DateTime end = new DateTime(System.currentTimeMillis() + (2592000000L * months));
+        DateTime end = new DateTime(System.currentTimeMillis() + 604800000); //+ (2592000000L * months)
         // start 1 week before
-        DateTime start = new DateTime(System.currentTimeMillis() - 604800000);
+        DateTime start = new DateTime(System.currentTimeMillis() - (2592000000L * months)); // - 604800000
 
         this.events = GoogleCalendar.search(start, end, calendarId);
 

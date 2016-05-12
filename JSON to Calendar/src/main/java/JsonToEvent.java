@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Date;
 
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
@@ -34,9 +35,13 @@ public class JsonToEvent{
     private  String nameRoom;
 
 
-    public DateTime StringToDateTime(String date){
-        date = date.substring(0, date.length() - 5) + "Z";
-        return new DateTime(date);
+    public DateTime StringToDateTime(String inputDate){
+        inputDate = inputDate.substring(0, inputDate.length() - 5) + "Z";
+
+        DateTime dateTime = DateTime.parseRfc3339(inputDate);
+        System.out.println(dateTime);
+        Date date = new Date(dateTime.getValue());
+        return new DateTime(dateTime.getValue() + date.getTimezoneOffset() * 60000, -date.getTimezoneOffset());
     }
 
 

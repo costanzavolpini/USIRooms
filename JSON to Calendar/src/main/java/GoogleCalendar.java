@@ -104,7 +104,7 @@ public class GoogleCalendar {
         Events events = service.events().list(calendarId)
             .setTimeMin(start)
             .setTimeMax(end)
-            .setTimeZone("UTC")
+            .setTimeZone("CSET") //UTC
             .setMaxResults(2500)
             .setSingleEvents(true)
             .setOrderBy("startTime")
@@ -160,7 +160,7 @@ public class GoogleCalendar {
         }
     }
 
-    public static void update(ArrayList<Event> events, boolean force, String calendarId) throws IOException{
+    public static void update(List<Event> events, boolean force, String calendarId) throws IOException{
         // force : Force the update of all the events
         int i = 0;
         for (Event event : events){
