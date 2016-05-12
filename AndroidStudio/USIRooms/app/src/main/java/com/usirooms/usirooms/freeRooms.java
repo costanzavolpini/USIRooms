@@ -1,5 +1,6 @@
 package com.usirooms.usirooms;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -23,6 +25,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 
 public class freeRooms extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    String msg = "####### FreeRooms : ";
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -36,6 +39,7 @@ public class freeRooms extends AppCompatActivity
         setContentView(R.layout.activity_free_rooms);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        Log.d(msg, "The onCreate() event");
 /*
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -65,8 +69,27 @@ public class freeRooms extends AppCompatActivity
     }
 
     public void open_by_dates(MenuItem item) {
-        Intent StartNewActivity = new Intent(freeRooms.this, byDates.class);
-        startActivity(StartNewActivity);
+        Log.d(msg, "start problem1");
+
+        setContentView(R.layout.activity_by_dates);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        Log.d(msg, "start problem2");
+
+
+      //  Intent StartNewActivity = new Intent(freeRooms.this, byDates.class);
+    //    finish();
+      //  startActivity(StartNewActivity);
     }
 
     public void open_by_events(MenuItem item) {
@@ -77,6 +100,30 @@ public class freeRooms extends AppCompatActivity
     public void open_freerooms(MenuItem item) {
         Intent StartNewActivity = new Intent(freeRooms.this, freeRooms.class);
         startActivity(StartNewActivity);
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        Log.d(msg, "The onResume() event");
+    }
+
+    @Override
+    public void onPause(){
+        super.onPause();
+        Log.d(msg, "The onResume() event");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Log.d(msg, "The onStop() event");
+    }
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        Log.d(msg, "The onDestroy() event");
     }
 
     @Override
@@ -121,6 +168,7 @@ public class freeRooms extends AppCompatActivity
 
         } else if (id == R.id.by_dates) {
 
+
         } else if (id == R.id.by_events) {
 
         } else if (id == R.id.by_rooms) {
@@ -139,6 +187,7 @@ public class freeRooms extends AppCompatActivity
     @Override
     public void onStart() {
         super.onStart();
+        Log.d(msg, "The onStart() event");
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -156,9 +205,6 @@ public class freeRooms extends AppCompatActivity
         AppIndex.AppIndexApi.start(client, viewAction);
     }
 
-    @Override
-    public void onStop() {
-        super.onStop();
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -172,7 +218,7 @@ public class freeRooms extends AppCompatActivity
                 // TODO: Make sure this auto-generated app URL is correct.
                 Uri.parse("android-app://com.usirooms.usirooms/http/host/path")
         );
-        AppIndex.AppIndexApi.end(client, viewAction);
-        client.disconnect();
+//        AppIndex.AppIndexApi.end(client, viewAction);
+//        client.disconnect();
     }
-}
+

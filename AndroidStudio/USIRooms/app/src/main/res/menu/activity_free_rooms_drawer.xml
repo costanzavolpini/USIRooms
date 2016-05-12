@@ -24,7 +24,8 @@
             android:onClick="open_by_rooms"
             android:title="By Room"/>
     </group>
-    <item android:title="Pensare a come toglierlo">
+    <item android:title="Extra">
+        <!--pensare a come toglierlo-->
         <menu>
             <item
                 android:id="@+id/nav_share"
