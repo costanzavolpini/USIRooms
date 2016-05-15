@@ -1,0 +1,6 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <item name="ic_free_rooms" type="drawable">@drawable/ic_free_rooms</item>
+    <item name="ic_by_room" type="drawable">@drawable/ic_by_room</item>
+    <item name="ic_by_date" type="drawable">@drawable/ic_by_date</item>
+    <item name="ic_by_event" type="drawable">@drawable/ic_by_event</item>
+</resources>

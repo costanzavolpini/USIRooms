@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_free_rooms"
+            android:icon="@drawable/ic_free_rooms"
+            android:title="Free Rooms" />
+        <item
+            android:id="@+id/nav_date"
+            android:icon="@drawable/ic_by_date"
+            android:title="By Date" />
+        <item
+            android:id="@+id/nav_event"
+            android:icon="@drawable/ic_by_event"
+            android:title="By Event" />
+        <item
+            android:id="@+id/nav_room"
+            android:icon="@drawable/ic_by_room"
+            android:title="By Room" />
+
+    </group>
+
+</menu>
+
