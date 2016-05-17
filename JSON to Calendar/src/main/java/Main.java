@@ -24,6 +24,8 @@ import java.util.Comparator;
 
 public class Main{
 
+    private static final String calendarId = "psl5ie1jhug7m9geanaevl6oi0@group.calendar.google.com";
+
     public static void main(String[] args) throws IOException {
 
         List<Event> listAnalize = new ArrayList<Event>();
@@ -65,14 +67,14 @@ public class Main{
 
         System.out.println("TIME -  all events sorted: " + (System.currentTimeMillis() - startTime) + " ms");
 
-        List<Event> onlineEvents = GoogleCalendar.searcher("psl5ie1jhug7m9geanaevl6oi0@group.calendar.google.com");
+        List<Event> onlineEvents = GoogleCalendar.searcher(calendarId);
         System.out.println("Total online events loaded: " + onlineEvents.size());
 
         Collections.sort(onlineEvents, new DateTimeComparator());
 
         System.out.println("TIME - all loading operation finished: " + (System.currentTimeMillis() - startTime) + " ms");
 
-        new EventSync(onlineEvents, events);
+        new EventSync(events, onlineEvents, calendarId);
 
     }
 

@@ -122,82 +122,9 @@ public class GoogleCalendar {
         return search(start, end, calendarId);
     }
 
-
-    public static boolean equalsEvent(Event e1, Event e2){
-        if(e1.getSummary().equals(e1.getSummary()) &&
-        e1.getDescription().replaceAll("\n", "").replaceAll("&nbsp;","").equals(e2.getDescription().replaceAll("\n", "").replaceAll("&nbsp;","")) &&
-        e1.getLocation().equals(e2.getLocation()) &&
-        //e1.getSource().equals(e2.getSource()) &&
-        e1.getStart().equals(e2.getStart()) &&
-        e1.getEnd().equals(e2.getEnd())){
-            return true;
-        }
-        return false;
-    }
-
-    public static Event corrispondingEvent(Event event, List<Event> calendarEvents) throws IOException{
-        if (calendarEvents.size() == 0) {
-            return null;
-        } else {
-            for (Event calendarEvent : calendarEvents) {
-                // Starting the comparison
-                // if the two ID are the same
-                if (event.getSummary().split("_")[0].equals(calendarEvent.getSummary().split("_")[0])){
-                    return calendarEvent;
-                }
-            }
-            return null;
-        }
-    }
-
     public static void delete(Event event, String calendarId) throws IOException{
         System.out.println("Deleting an event: " + event.getId());
         service.events().delete(calendarId, event.getId()).execute();
-    }
-
-    public static boolean toUpdate(Event event, Event calendarEvent) throws IOException{
-        if (calendarEvent == null || !equalsEvent(calendarEvent,event)){
-            if(calendarEvent != null){
-                System.out.println("Updating event...");
-                // System.out.println(event.getStart());
-                // System.out.println("Finish");
-                // System.out.println(calendarEvent.getStart());
-            }
-            return true;
-        }else{
-            System.out.println("No need to update the event");
-            return false;
-        }
-    }
-
-    public static void update(List<Event> events, boolean force, String calendarId) throws IOException{
-        // force : Force the update of all the events
-        int i = 0;
-        for (Event event : events){
-
-            DateTime start = event.getStart().getDateTime();
-            if (start == null) {
-                start = event.getStart().getDate();
-            }
-            DateTime end = event.getEnd().getDateTime();
-            if (start == null) {
-                start = event.getEnd().getDate();
-            }
-            // Searching corrisponding events
-            Event calendarEvent = corrispondingEvent(event, search (start, end, calendarId));
-
-
-            if(force || toUpdate(event, calendarEvent)){
-                if(calendarEvent != null){
-                    delete(calendarEvent, calendarId);
-                }
-                write(event, calendarId);
-                i++;
-            }
-
-        }
-
-        System.out.println(i + " events updated");
     }
 
     public static void write(Event event, String calendarId) throws IOException{
