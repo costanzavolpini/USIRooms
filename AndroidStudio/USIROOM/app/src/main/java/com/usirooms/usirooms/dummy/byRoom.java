@@ -1,57 +1,82 @@
 package com.usirooms.usirooms.dummy;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
+import com.usirooms.usirooms.R;
 import com.usirooms.usirooms.TabFragment1;
 import com.usirooms.usirooms.TabFragment2;
 import com.usirooms.usirooms.TabFragment3;
 
-public class byRoom extends FragmentStatePagerAdapter {
-    int mNumOfTabs;
+import java.util.ArrayList;
+/**
+ * Created by costanzavolpini on 17/05/16.
+ */
+public class byRoom extends Fragment {
 
-    public byRoom(FragmentManager fm, int NumOfTabs) {
-        super(fm);
-        this.mNumOfTabs = NumOfTabs;
+    private TabLayout mTabLayout;
+    private ViewPager mViewPager;
+
+    private DummyPagerAdapter mDummyPagerAdapter;
+
+
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.by_room, container, false);
+        mTabLayout = (TabLayout) getActivity().findViewById(R.id.tab_layout);
+        mViewPager = (ViewPager) v.findViewById(R.id.pager);
+
+        mDummyPagerAdapter = new DummyPagerAdapter(getChildFragmentManager());
+        mDummyPagerAdapter.addFragment(new TabFragment1(), "Main Building");
+        mDummyPagerAdapter.addFragment(new TabFragment2(), "Black Building");
+        mDummyPagerAdapter.addFragment(new TabFragment3(), "Red Building");
+
+        mViewPager.setAdapter(mDummyPagerAdapter);
+        mTabLayout.setupWithViewPager(mViewPager);
+
+        return v;
     }
 
-    @Override
-    public Fragment getItem(int position) {
+    private class DummyPagerAdapter extends FragmentPagerAdapter {
+        private final ArrayList<Fragment> mFragmentsArrayList = new ArrayList<>();
+        private final ArrayList<String> mFragmentNamesArrayList = new ArrayList<>();
+        public DummyPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
 
-        switch (position) {
-            case 0:
-                TabFragment1 tab1 = new TabFragment1();
-                return tab1;
-            case 1:
-                TabFragment2 tab2 = new TabFragment2();
-                return tab2;
-            case 2:
-                TabFragment3 tab3 = new TabFragment3();
-                return tab3;
-            default:
-                return null;
+        @Override
+        public Fragment getItem(int position) {
+            return mFragmentsArrayList.get(position);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mFragmentNamesArrayList.get(position);
+        }
+
+        /**
+         * Method used to add a fragment to the adapter
+         * @param f The fragment
+         * @param d It's description/title
+         */
+        public void addFragment(Fragment f, String d) {
+            mFragmentsArrayList.add(f);
+            mFragmentNamesArrayList.add(d);
+        }
+
+        @Override
+        public int getCount() {
+            return mFragmentsArrayList.size();
         }
     }
-
-    @Override
-    public int getCount() {
-        return mNumOfTabs;
-    }
 }
-
-
-/**
- * Created by costanzavolpini on 14/05/16.
- */
-//public class byRoom extends Fragment {
-//
-//    @Nullable
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-//        return inflater.inflate(R.layout.by_room,container,false);
-//
-//
-//
-//    }
-//}

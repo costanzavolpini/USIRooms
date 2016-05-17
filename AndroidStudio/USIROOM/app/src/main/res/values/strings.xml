@@ -13,7 +13,12 @@
     <string name="title_activity_set_building">Set your Building</string>
     <!--<string name="title_activity_settings">Settings</string>-->
 
-    <!-- Strings related to Settings -->
+    <!-- Strings related to By Event -->
+    <string name="room_event"> Room 006 </string>
+    <string name="building_event"> Black Building </string>
+    <string name="time_event"> 15:00-16:00 </string>
+    <string name="name_event">CSS LIVE</string>
+
 
     <!-- Example General settings -->
     <string name="pref_header_general">General</string>

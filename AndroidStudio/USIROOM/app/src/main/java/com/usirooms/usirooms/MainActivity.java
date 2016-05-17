@@ -2,6 +2,7 @@ package com.usirooms.usirooms;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
@@ -42,6 +43,9 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        if (savedInstanceState == null) {
+            navigationView.getMenu().performIdentifierAction(R.id.nav_free_rooms, 0);
+        }
     }
 
     @Override
@@ -97,8 +101,8 @@ public class MainActivity extends AppCompatActivity
             fragmentManager.beginTransaction().replace(R.id.relativeLayout, fragment).commit();
 
         } else if (id == R.id.nav_room) {
-            fragment = new byRoom();
             FragmentManager fragmentManager = getSupportFragmentManager();
+            fragment = new byRoom();
             fragmentManager.beginTransaction().replace(R.id.relativeLayout, fragment).commit();
 
         } else if (id == R.id.nav_date) {
@@ -111,12 +115,15 @@ public class MainActivity extends AppCompatActivity
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.relativeLayout, fragment).commit();
         }
-//
-//        } else if (id == R.id.nav_share) {
-//
-//        } else if (id == R.id.nav_send) {
-//
-//        }
+
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        if (tabLayout != null) {
+            if (id != R.id.nav_room) {
+                tabLayout.setVisibility(View.GONE);
+            } else {
+                tabLayout.setVisibility(View.VISIBLE);
+            }
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
