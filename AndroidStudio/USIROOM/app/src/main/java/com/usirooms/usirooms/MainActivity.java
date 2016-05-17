@@ -9,7 +9,12 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.usirooms.usirooms.dummy.FreeRooms;
 import com.usirooms.usirooms.dummy.byDate;
@@ -19,6 +24,7 @@ import com.usirooms.usirooms.dummy.byRoom;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +41,7 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
     }
 
     @Override
@@ -47,12 +54,12 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.main, menu);
-//        return true;
-//    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
 
     //IMPOSTAZIONI SETTING
 //    @Override
@@ -69,6 +76,13 @@ public class MainActivity extends AppCompatActivity
 //
 //        return super.onOptionsItemSelected(item);
 //    }
+
+
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l){
+        TextView myText = (TextView) view;
+        Toast.makeText(this, "You Selected"+myText.getText(), Toast.LENGTH_SHORT).show();
+    }
+
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
