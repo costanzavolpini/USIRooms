@@ -104,7 +104,7 @@ public class GoogleCalendar {
         Events events = service.events().list(calendarId)
             .setTimeMin(start)
             .setTimeMax(end)
-            .setTimeZone("CSET") //UTC
+            .setTimeZone("CEST") //CSET or UTC
             .setMaxResults(2500)
             .setSingleEvents(true)
             .setOrderBy("startTime")
@@ -112,6 +112,16 @@ public class GoogleCalendar {
         List<Event> items = events.getItems();
         return items;
     }
+
+    public static List<Event> searcher(String calendarId) throws IOException {
+        // end X mounths after
+        DateTime end = new DateTime(System.currentTimeMillis() + 604800000); //+ (2592000000L * months)
+        // start 1 week before
+        DateTime start = new DateTime(System.currentTimeMillis() - (2592000000L * 6)); // - 604800000
+
+        return search(start, end, calendarId);
+    }
+
 
     public static boolean equalsEvent(Event e1, Event e2){
         if(e1.getSummary().equals(e1.getSummary()) &&
