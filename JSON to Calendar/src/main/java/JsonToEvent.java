@@ -39,7 +39,6 @@ public class JsonToEvent{
         inputDate = inputDate.substring(0, inputDate.length() - 5) + "Z";
 
         DateTime dateTime = DateTime.parseRfc3339(inputDate);
-        System.out.println(dateTime);
         Date date = new Date(dateTime.getValue());
         return new DateTime(dateTime.getValue() + date.getTimezoneOffset() * 60000, -date.getTimezoneOffset());
     }

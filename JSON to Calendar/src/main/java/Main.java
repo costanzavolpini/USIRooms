@@ -42,36 +42,37 @@ public class Main{
         System.out.println("TIME -  analysis JSONs: " + (System.currentTimeMillis() - startTime) + " ms");
 
         ArrayList<UsiEvent> usiEvents = new ArrayList<UsiEvent>();
-        // usiEvents.add(new UsiEvent("vtj0r7h12jfpjvkcagddaam3jc@group.calendar.google.com", 6, "Room 003"));
-        // usiEvents.add(new UsiEvent("4uldjdn9bf00aqger105crd5bc@group.calendar.google.com", 6, "Room 004"));
-        // usiEvents.add(new UsiEvent("rkm9cupl0js8rinfmrtvek9714@group.calendar.google.com", 6, "Room 006"));
-        // usiEvents.add(new UsiEvent("7ms1f85tgr02ho81m7n6s28scs@group.calendar.google.com", 6, "Room 007"));
-        // usiEvents.add(new UsiEvent("juuikibcrm8rqaut36bn0n6i6g@group.calendar.google.com", 6, "Room 008"));
-        // usiEvents.add(new UsiEvent("8fu02csfbnnpfl7c08tg2r3ac8@group.calendar.google.com", 6, "Room 013"));
+        usiEvents.add(new UsiEvent("vtj0r7h12jfpjvkcagddaam3jc@group.calendar.google.com", "Room 003"));
+        usiEvents.add(new UsiEvent("4uldjdn9bf00aqger105crd5bc@group.calendar.google.com", "Room 004"));
+        usiEvents.add(new UsiEvent("rkm9cupl0js8rinfmrtvek9714@group.calendar.google.com", "Room 006"));
+        usiEvents.add(new UsiEvent("7ms1f85tgr02ho81m7n6s28scs@group.calendar.google.com", "Room 007"));
+        usiEvents.add(new UsiEvent("juuikibcrm8rqaut36bn0n6i6g@group.calendar.google.com", "Room 008"));
+        usiEvents.add(new UsiEvent("8fu02csfbnnpfl7c08tg2r3ac8@group.calendar.google.com", "Room 013"));
 
         for (UsiEvent usiEvent : usiEvents){
             listAnalize = usiEvent.getEvents();
             events.addAll(listAnalize);
         }
 
+
         System.out.println("TIME -  total loading time: " + (System.currentTimeMillis() - startTime) + " ms");
 
 
 
-        System.out.println("Total events loaded:" + events.size());
+        System.out.println("Total events loaded: " + events.size());
 
         Collections.sort(events, new DateTimeComparator());
 
+        System.out.println("TIME -  all events sorted: " + (System.currentTimeMillis() - startTime) + " ms");
 
-        for (Event e : events){
-            long u = e.getStart().getDateTime().getValue();
-            System.out.println(new java.util.Date(u) + e.getSummary());
-        //     System.out.println(new java.util.Date(u));
-            // System.out.println(e);
-        }
+        List<Event> onlineEvents = GoogleCalendar.searcher("psl5ie1jhug7m9geanaevl6oi0@group.calendar.google.com");
+        System.out.println("Total online events loaded: " + onlineEvents.size());
 
-        // psl5ie1jhug7m9geanaevl6oi0@group.calendar.google.com
-        //GoogleCalendar.update(events, false, "psl5ie1jhug7m9geanaevl6oi0@group.calendar.google.com");
+        Collections.sort(onlineEvents, new DateTimeComparator());
+
+        System.out.println("TIME - all loading operation finished: " + (System.currentTimeMillis() - startTime) + " ms");
+
+        new EventSync(onlineEvents, events);
 
     }
 
