@@ -1,5 +1,6 @@
 package com.usirooms.usirooms;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -49,6 +50,14 @@ public class MainActivity extends AppCompatActivity
         if (savedInstanceState == null) {
             navigationView.getMenu().performIdentifierAction(R.id.nav_free_rooms, 0);
         }
+
+        Button b = (Button) findViewById(R.id.credits);
+        b.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                startActivity(new Intent(MainActivity.this, Credit.class));
+            }
+        });
     }
 
     @Override
@@ -132,6 +141,20 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
+//    public void addListenerOnButton(){
+//        button = (Button) findViewById(R.id.credits);
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                Intent intent = new Intent(v.getContext(), Credit.class);
+////                startActivity(intent);
+////
+//            setContentView(R.layout.credit_layout);
+//            }
+//        });
+//    }
 
 
 
