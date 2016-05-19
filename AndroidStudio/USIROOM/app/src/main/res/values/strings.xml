@@ -77,11 +77,17 @@
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="title_activity_set__building">Set your Building</string>
 
+
+    <!--Set your favorite Building-->
     <string-array name="Set_your_Building">
         <item> Main Building </item>
         <item> Black Building </item>
         <item> Red Building </item>
     </string-array>
+
+
+
+
     <string name="title_activity_byroom_swipe">byroom_swipe</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="title_activity_by_room_tab">ByRoomTab</string>

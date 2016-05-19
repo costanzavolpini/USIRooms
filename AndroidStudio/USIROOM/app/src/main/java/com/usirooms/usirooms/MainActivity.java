@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +26,8 @@ import com.usirooms.usirooms.dummy.byRoom;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    Button button;
 
 
     @Override
@@ -129,4 +132,11 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
+
+//    public void seeRoom (View view){
+//        Intent intent = new Intent(view.getContext(), Room_specific.class);
+//        startActivity(intent);
+//    }
 }

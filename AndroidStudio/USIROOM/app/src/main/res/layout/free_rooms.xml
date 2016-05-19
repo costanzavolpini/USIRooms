@@ -52,3 +52,7 @@
 
 
 </RelativeLayout>
+
+
+    <!--android:clickable="true"-->
+    <!--android:onClick="seeRoom"-->
