@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="top"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
 
@@ -39,5 +40,15 @@
         android:id="@+id/textView7"
         android:layout_below="@+id/textView6"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CLOSE"
+        android:id="@+id/button"
+        android:layout_marginTop="61dp"
+        android:layout_below="@+id/textView7"
+        android:layout_centerHorizontal="true"
+        android:background="#82b1ff" />
 
 </RelativeLayout>
