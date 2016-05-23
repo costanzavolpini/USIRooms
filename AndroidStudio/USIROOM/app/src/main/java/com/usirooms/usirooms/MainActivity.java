@@ -1,6 +1,5 @@
 package com.usirooms.usirooms;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -51,11 +50,13 @@ public class MainActivity extends AppCompatActivity
             navigationView.getMenu().performIdentifierAction(R.id.nav_free_rooms, 0);
         }
 
-        Button b = (Button) findViewById(R.id.credits);
-        b.setOnClickListener(new View.OnClickListener(){
+        Button buttonc = (Button) findViewById(R.id.credits);
+        buttonc.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                startActivity(new Intent(MainActivity.this, Credit.class));
+                Credit credit = new Credit();
+                credit.show(getFragmentManager(), "123");
+                //startActivity(new Intent(MainActivity.this, Credit.class));
             }
         });
 

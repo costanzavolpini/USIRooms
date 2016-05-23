@@ -1,24 +1,33 @@
 package com.usirooms.usirooms;
 
-import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 
 /**
  * Created by costanzavolpini on 19/05/16.
  */
-public class Credit extends Activity {
+public class Credit extends DialogFragment {
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.credit_layout);
-
-        DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm);
-
-        int width = dm.widthPixels;
-        int height = dm.heightPixels;
-
-        getWindow().setLayout((int)(width*.8), (int)(height*.6));
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        AlertDialog.Builder builder =
+                new AlertDialog.Builder(getActivity());
+        builder.setMessage("Costanza Volpini\nMarco Tollini" +
+                "\nMichele Lustro\nThomas Del Prete")
+                .setTitle("Credits")
+                .setPositiveButton("CLOSE", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        //nothing
+                    }
+                })
+                    .setNegativeButton("", new DialogInterface.OnClickListener(){
+                        public void onClick (DialogInterface dialog, int id){
+                            //nothing
+                        }
+        });
+        return builder.create();
     }
 }

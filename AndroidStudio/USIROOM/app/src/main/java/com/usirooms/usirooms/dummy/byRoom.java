@@ -37,8 +37,8 @@ public class byRoom extends Fragment {
         mViewPager = (ViewPager) v.findViewById(R.id.pager);
 
         mDummyPagerAdapter = new DummyPagerAdapter(getChildFragmentManager());
-        mDummyPagerAdapter.addFragment(new TabFragment1(), "Main Building");
-        mDummyPagerAdapter.addFragment(new TabFragment2(), "Black Building");
+        mDummyPagerAdapter.addFragment(new TabFragment1(), "Black Building");
+        mDummyPagerAdapter.addFragment(new TabFragment2(), "Main Building");
         mDummyPagerAdapter.addFragment(new TabFragment3(), "Red Building");
 
         mViewPager.setAdapter(mDummyPagerAdapter);
