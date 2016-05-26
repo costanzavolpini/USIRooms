@@ -18,7 +18,10 @@ import com.usirooms.usirooms.TabFragment3;
 
 import java.util.ArrayList;
 /**
- * Created by costanzavolpini on 17/05/16.
+ * This class implemented as TabActivity shows all the rooms of all buildings dividing that in more tab.
+ * Rooms will appear as list.
+ * Structure
+ * NameRoom bottom (green/red depending on the state of the room)
  */
 public class byRoom extends Fragment {
 
@@ -28,7 +31,7 @@ public class byRoom extends Fragment {
     private DummyPagerAdapter mDummyPagerAdapter;
 
 
-
+    // Method that return the layout corresponding to that class
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -36,6 +39,7 @@ public class byRoom extends Fragment {
         mTabLayout = (TabLayout) getActivity().findViewById(R.id.tab_layout);
         mViewPager = (ViewPager) v.findViewById(R.id.pager);
 
+        //Create 3 tab each one for a different building
         mDummyPagerAdapter = new DummyPagerAdapter(getChildFragmentManager());
         mDummyPagerAdapter.addFragment(new TabFragment1(), "Black Building");
         mDummyPagerAdapter.addFragment(new TabFragment2(), "Main Building");
@@ -54,26 +58,25 @@ public class byRoom extends Fragment {
             super(fm);
         }
 
+        //Return the fragment corresponding to the tab that we click
         @Override
         public Fragment getItem(int position) {
             return mFragmentsArrayList.get(position);
         }
 
+        //Return the title corresponding to the tab that we click
         @Override
         public CharSequence getPageTitle(int position) {
             return mFragmentNamesArrayList.get(position);
         }
 
-        /**
-         * Method used to add a fragment to the adapter
-         * @param f The fragment
-         * @param d It's description/title
-         */
+        // Method used to add a fragment to the adapter
         public void addFragment(Fragment f, String d) {
             mFragmentsArrayList.add(f);
             mFragmentNamesArrayList.add(d);
         }
 
+        //Return the number of total tabs
         @Override
         public int getCount() {
             return mFragmentsArrayList.size();

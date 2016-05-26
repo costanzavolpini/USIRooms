@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.usirooms.usirooms.R;
 
 /**
- * Created by costanzavolpini on 18/05/16.
+ * Class creating to visualize details of a class, such that: capacity, name, floor, map, status (free or not)
  */
 public class Room_specific extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState){

@@ -27,7 +27,7 @@ import com.usirooms.usirooms.dummy.byRoom;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    Button button;
+   // Button button;
 
 
     @Override
@@ -50,15 +50,16 @@ public class MainActivity extends AppCompatActivity
             navigationView.getMenu().performIdentifierAction(R.id.nav_free_rooms, 0);
         }
 
+        // Credits pop-up
         Button buttonc = (Button) findViewById(R.id.credits);
         buttonc.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 Credit credit = new Credit();
                 credit.show(getFragmentManager(), "123");
-                //startActivity(new Intent(MainActivity.this, Credit.class));
             }
         });
+
 
     }
 
@@ -78,23 +79,6 @@ public class MainActivity extends AppCompatActivity
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-
-    //IMPOSTAZIONI SETTING
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
-
 
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l){
         TextView myText = (TextView) view;
@@ -143,25 +127,4 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-
-//    public void addListenerOnButton(){
-//        button = (Button) findViewById(R.id.credits);
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-////                Intent intent = new Intent(v.getContext(), Credit.class);
-////                startActivity(intent);
-////
-//            setContentView(R.layout.credit_layout);
-//            }
-//        });
-//    }
-
-
-
-//    public void seeRoom (View view){
-//        Intent intent = new Intent(view.getContext(), Room_specific.class);
-//        startActivity(intent);
-//    }
 }

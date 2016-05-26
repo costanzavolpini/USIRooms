@@ -7,7 +7,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 
 /**
- * Created by costanzavolpini on 19/05/16.
+ * Class that generate a pop-up to show the credits
  */
 public class Credit extends DialogFragment {
 

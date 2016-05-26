@@ -10,9 +10,11 @@ import android.view.ViewGroup;
 import com.usirooms.usirooms.R;
 
 /**
- * Created by costanzavolpini on 15/05/16.
+ * This class illustrate all the events of the currently week for all the building and we display it as CardView using RecyclerView.
  */
 public class byEvent extends Fragment {
+
+    // Method that return the layout corresponding to that class
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
