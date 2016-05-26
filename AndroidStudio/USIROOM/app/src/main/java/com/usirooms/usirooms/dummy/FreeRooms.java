@@ -1,18 +1,13 @@
 package com.usirooms.usirooms.dummy;
 
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.usirooms.usirooms.R;
-
-import java.util.Arrays;
 
 /**
  * This class must return as cardView (using recyclerView) cards where it appears:
@@ -20,16 +15,16 @@ import java.util.Arrays;
  * !!!!! RETURN ONLY THE ROOM OF THE BUILDING THAT WE HAVE SELECT FROM THE NAVIGATION VIEW !!!!
  */
 public class FreeRooms extends Fragment {
-    // EXAMPLE OF CARD VIEW WITG RECYCLER VIEW
-
-    //Reference to the RecyclerView.
-    private RecyclerView rv;
-
-    //I also need a reference to the Adapter I will use to populate the Recyclerview.
-    FileAdapter adapter;
-
-    public FreeRooms() {
-    }
+//    // EXAMPLE OF CARD VIEW WITG RECYCLER VIEW
+//
+//    //Reference to the RecyclerView.
+//    private RecyclerView rv;
+//
+//    //I also need a reference to the Adapter I will use to populate the Recyclerview.
+//    FileAdapter adapter;
+//
+//    public FreeRooms() {
+//    }
 
     @Nullable
     @Override
@@ -37,29 +32,29 @@ public class FreeRooms extends Fragment {
         return inflater.inflate(R.layout.free_rooms,container,false);
     }
 
-    ////////////////Partial code of FreeRoom///////////////////
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        //Instantiate the adapter class and pass it a List<File> of all files in the external storage root directory.
-        adapter = new FileAdapter(Arrays.asList(Environment.getExternalStorageDirectory().listFiles()));
-
-        //Now I instantiate the RecyclerView from the Fragment's xml layout file [uifragment_main.xml]
-        rv = (RecyclerView) getActivity().findViewById(R.id.rv);
-
-    /*We are required to se a Layout Manager for the RecyclerView.
-    There are two that I see in the documentation, LinearLayoutManager,
-    GridLayoutManager, and StaggeredLayoutManager.   This layout will
-    measure and position the CardView from [row_layout.xml] within the RecyclerView.
-    So, CardView contains the TextView that holds the file name, and the CardView
-    is held by the LinearLayoutManager in the RecyclerView.
-    */
-        rv.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-        //Just like with ListView, we set the adapter.
-        rv.setAdapter(adapter);
-    }
+//    ////////////////Partial code of FreeRoom///////////////////
+//    @Override
+//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+//        super.onActivityCreated(savedInstanceState);
+//
+//        //Instantiate the adapter class and pass it a List<File> of all files in the external storage root directory.
+//        adapter = new FileAdapter(Arrays.asList(Environment.getExternalStorageDirectory().listFiles()));
+//
+//        //Now I instantiate the RecyclerView from the Fragment's xml layout file [uifragment_main.xml]
+//        rv = (RecyclerView) getActivity().findViewById(R.id.rv);
+//
+//    /*We are required to se a Layout Manager for the RecyclerView.
+//    There are two that I see in the documentation, LinearLayoutManager,
+//    GridLayoutManager, and StaggeredLayoutManager.   This layout will
+//    measure and position the CardView from [row_layout.xml] within the RecyclerView.
+//    So, CardView contains the TextView that holds the file name, and the CardView
+//    is held by the LinearLayoutManager in the RecyclerView.
+//    */
+//        rv.setLayoutManager(new LinearLayoutManager(getActivity()));
+//
+//        //Just like with ListView, we set the adapter.
+//        rv.setAdapter(adapter);
+//    }
 }
 
 
@@ -113,4 +108,68 @@ public class FreeRooms extends Fragment {
 //        return inflater.inflate(R.layout.free_rooms,container,false);
 //    }
 
+
+
+
+
+
+//private class FileAdapter extends RecyclerView.Adapter<FileAdapter.RecyclerViewHolder> {
+//
+//    private List<File> list;
+//
+//    public FileAdapter(List<File> list) {
+//        this.list = list;
+//    }
+//
+//    //Called to update the list when necessary.
+//    public void updateList(List<File> list) {
+//        this.list = list;
+//        notifyDataSetChanged();
+//    }
+//
+//    //Here we inflate the xml used for the "rows".
+//    @Override
+//    public RecyclerViewHolder onCreateViewHolder(ViewGroup viewGroup, final int i) {
+//        View v = LayoutInflater.from(viewGroup.getContext()).inflate(
+//                R.layout.row_layout, viewGroup, false);
+//
+//        return new RecyclerViewHolder(v);
+//    }
+//
+//    @Override
+//    //here we access the Views held by the viewholder.
+//    public void onBindViewHolder(RecyclerViewHolder viewHolder, int i) {
+//
+//        viewHolder.getTextView().setText(list.get(i).getName());
+//    }
+//
+//    @Override
+//    public int getItemCount() {
+//        return list.size();
+//    }
+//
+//    ////////////////View holder for the RecyclerView////////////////
+//    public class RecyclerViewHolder extends RecyclerView.ViewHolder {
+//        private TextView itemView;
+//        private CardView cardView;
+//
+//        public RecyclerViewHolder(final View view) {
+//            super(view);
+//            view.setOnClickListener(new View.OnClickListener() {
+//                public void onClick(View v) {
+//                    Toast.makeText(view.getContext(), "You clicked "
+//                            + String.valueOf(rv.getChildPosition(v)), Toast.LENGTH_LONG).show();
+//                }
+//            });
+//            itemView = (TextView) view.findViewById(R.id.tv);
+//            cardView = (CardView) view.findViewById(R.id.card_view);
+//            cardView.setRadius(15);
+//        }
+//
+//        public TextView getTextView() {
+//            return itemView;
+//        }
+//    }
+//
+//} //FileAdapter
 
