@@ -24,21 +24,5 @@ public class byDate extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.by_date, container, false);
  }
-
-//    // Method that selecting a day must return something.
-//    dataEvento.setOnClickListener(new OnClickListener() {
-//        public void onClick(View v) {
-//            //Qui crei il dialog dove visualizzi il valore che ti interessa
-//            new AlertDialog.Builder(new ContextThemeWrapper(Context, R.style.Dialog))
-//                    .setTitle("Titolo dialog")
-//                    .setMessage("Evento" + evento).show();
-//        });
-//    }
 }
 
-
-//
-//    // JUST FOR DEBUG
-//    public void selectDay(View view){
-//        System.out.println("ciao marco" + calendarView.getDate());
-//    }

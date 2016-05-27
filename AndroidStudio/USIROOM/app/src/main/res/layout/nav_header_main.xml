@@ -10,8 +10,6 @@
         tools:context=".MainActivity"
         android:weightSum="1">
 
-
-
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,7 +17,6 @@
         android:entries="@array/Set_your_Building"
         android:paddingBottom="5dp"
         android:paddingLeft="10dp"/>
-
 
 </LinearLayout>
 

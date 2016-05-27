@@ -10,6 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingTop="105dp"
-        android:id="@android:id/list">
+        android:id="@android:id/list"
+        android:clickable="true"
+        android:contextClickable="true">
     </ListView>
 </RelativeLayout>

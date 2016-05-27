@@ -4,39 +4,12 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="nameroom"> Room 008 </string>
-    <string name="time"> 12:00-16:00 </string>
 
     <!-- Strings related to By Event -->
     <string name="room_event"> Room 006 </string>
     <string name="building_event"> Black Building </string>
     <string name="time_event"> 15:00-16:00 </string>
     <string name="name_event">CSS LIVE</string>
-
-
-    <!-- Example settings for Data & Sync -->
-    <string name="pref_header_data_sync">Data &amp; sync</string>
-
-    <string name="pref_title_sync_frequency">Sync frequency</string>
-    <string-array name="pref_sync_frequency_titles">
-        <item>15 minutes</item>
-        <item>30 minutes</item>
-        <item>1 hour</item>
-        <item>3 hours</item>
-        <item>6 hours</item>
-        <item>Never</item>
-    </string-array>
-    <string-array name="pref_sync_frequency_values">
-        <item>15</item>
-        <item>30</item>
-        <item>60</item>
-        <item>180</item>
-        <item>360</item>
-        <item>-1</item>
-    </string-array>
-
 
     <!--Set your favorite Building-->
     <string-array name="Set_your_Building">
@@ -56,15 +29,15 @@
     </string-array>
 
     <string-array name="room_mainbuilding">
-    <item>Room 120</item>
-    <item>Room 128</item>
-    <item>Room 156</item>
-    <item>Room 159</item>
-    <item>Room 250</item>
-    <item>Room 253</item>
-    <item>Room 254</item>
-    <item>Room 354</item>
-    <item>Room 355</item>
+        <item>Room 120</item>
+        <item>Room 128</item>
+        <item>Room 156</item>
+        <item>Room 159</item>
+        <item>Room 250</item>
+        <item>Room 253</item>
+        <item>Room 254</item>
+        <item>Room 354</item>
+        <item>Room 355</item>
     </string-array>
 
     <string-array name="room_redbuilding">

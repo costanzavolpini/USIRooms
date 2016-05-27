@@ -1,5 +1,8 @@
 package com.usirooms.usirooms;
 
+import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -8,13 +11,14 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,9 +30,6 @@ import com.usirooms.usirooms.dummy.byRoom;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
-   // Button button;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,17 +51,44 @@ public class MainActivity extends AppCompatActivity
             navigationView.getMenu().performIdentifierAction(R.id.nav_free_rooms, 0);
         }
 
-        // Credits pop-up
-        Button buttonc = (Button) findViewById(R.id.credits);
-        buttonc.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Credit credit = new Credit();
-                credit.show(getFragmentManager(), "123");
-            }
-        });
+    }
 
+    public void credits(View v){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
+        TextView title = new TextView(this);
+        // You Can Customise your Title here
+        title.setText("Credits");
+        title.setPadding(0, 35, 0, -7);
+        title.setGravity(Gravity.CENTER);
+        title.setTextColor(Color.DKGRAY);
+        title.setTextSize(20);
+        title.setTypeface(Typeface.DEFAULT_BOLD, 1);
+
+        // set title
+        alertDialogBuilder.setCustomTitle(title);
+
+        // set dialog message
+        alertDialogBuilder
+                .setMessage("Costanza Volpini\nMarco Tollini" +
+                        "\nMichele Lustro\nThomas Del Prete")
+                .setCancelable(false)
+
+                .setNegativeButton("Close", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        // create alert dialog
+        AlertDialog dialog = alertDialogBuilder.show();
+
+        TextView messageText = (TextView)dialog.findViewById(android.R.id.message);
+        messageText.setGravity(Gravity.CENTER);
+
+        dialog.show();
+
+        Log.i("info", "Credits clicked");
     }
 
     @Override
@@ -71,13 +99,6 @@ public class MainActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
     }
 
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l){
