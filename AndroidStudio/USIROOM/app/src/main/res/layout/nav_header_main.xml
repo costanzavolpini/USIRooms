@@ -13,10 +13,11 @@
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/mainbuilding"
+        android:id="@+id/spin"
         android:entries="@array/Set_your_Building"
         android:paddingBottom="5dp"
-        android:paddingLeft="10dp"/>
+        android:paddingLeft="10dp"
+        android:nestedScrollingEnabled="true" />
 
 </LinearLayout>
 
