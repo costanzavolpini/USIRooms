@@ -5,12 +5,11 @@
     android:orientation="vertical"
     android:background="#ffffff">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Coming Soon"
-        android:textAppearance="?android:attr/textAppearanceLarge"/>
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="105dp"
+        android:id="@android:id/list">
+    </ListView>
 
 </RelativeLayout>
