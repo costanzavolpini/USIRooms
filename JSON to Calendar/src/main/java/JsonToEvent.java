@@ -8,20 +8,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Date;
 
-import com.google.api.client.auth.oauth2.Credential;
-import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
-import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
-import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
-import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
-import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
-import com.google.api.client.http.HttpTransport;
-import com.google.api.client.json.jackson2.JacksonFactory;
-import com.google.api.client.json.JsonFactory;
-import com.google.api.client.util.store.FileDataStoreFactory;
-import com.google.api.client.util.DateTime;
-import com.google.api.services.calendar.CalendarScopes;
-import com.google.api.services.calendar.model.*;
-
 public class JsonToEvent{
     private  DateTime start;
     private  DateTime end;
@@ -40,35 +26,7 @@ public class JsonToEvent{
 
         DateTime dateTime = DateTime.parseRfc3339(inputDate);
         Date date = new Date(dateTime.getValue());
-        return new DateTime(dateTime.getValue() + date.getTimezoneOffset() * 60000, -date.getTimezoneOffset());
-    }
-
-
-    public Event eventCreator(){
-        Event event = new Event()
-
-        // Event id, name and description
-        .setSummary(idEvent + "_" + nameEvent)
-        .setDescription(description)
-
-        // Room id, name and floor
-        .setLocation(idRoom + "_" + nameRoom);
-        Event.Source source = new Event.Source()
-        .setTitle(idOrganizer + "_" + nameOrganizer + "_" + emailOrganizer)
-        .setUrl("http://usi.ch");
-        event.setSource(source);
-
-        // Event begin, end
-        EventDateTime begin = new EventDateTime()
-            .setDateTime(start)
-            .setTimeZone("Europe/Zurich");
-        event.setStart(begin);
-        EventDateTime ending = new EventDateTime()
-            .setDateTime(end)
-            .setTimeZone("Europe/Zurich");
-        event.setEnd(ending);
-
-        return event;
+        return new Date(dateTime.getValue() + date.getTimezoneOffset() * 60000, -date.getTimezoneOffset());
     }
 
 
@@ -111,6 +69,46 @@ public class JsonToEvent{
 
     public void setNameRoom(String nameRoom){
         this.nameRoom = nameRoom;
+    }
+
+    public Date getStart(){
+        return start;
+    }
+
+    public Date getEnd(){
+        return end;
+    }
+
+    public String getIdEvent(){
+        return idEvent;
+    }
+
+    public String getNameEvent(){
+        return nameEvent;
+    }
+
+    public String getDescritpio(){
+        return description;
+    }
+
+    public String getIdOrganizer(){
+        return idOrganizer;
+    }
+
+    public String getNameOrganizer(){
+        return nameOrganizer;
+    }
+
+    public String getEmailOrganizer(){
+        return emailOrganizer;
+    }
+
+    public String getIdRoom(){
+        return idRoom;
+    }
+
+    public Stirng getNameRoom(){
+        return nameRoom;
     }
 
 }

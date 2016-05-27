@@ -28,6 +28,12 @@ public class Main{
 
     public static void main(String[] args) throws IOException {
 
+        if(false){
+            // delete all
+            GoogleCalendar.delete(GoogleCalendar.searcher(calendarId), calendarId);
+            System.exit(0);
+        }
+
         List<Event> listAnalize = new ArrayList<Event>();
         List<Event> events = new ArrayList<Event>();
 

@@ -13,12 +13,8 @@ import com.google.api.client.util.DateTime;
 import com.google.api.services.calendar.CalendarScopes;
 import com.google.api.services.calendar.model.*;
 
-import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
-import com.google.api.services.sqladmin.*;
-
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.List;
@@ -47,18 +43,14 @@ public class GoogleCalendar {
      */
     private static final List<String> SCOPES = Arrays.asList(CalendarScopes.CALENDAR);
 
-    private static final GoogleCredential credential = GoogleCredential.fromStream(new FileInputStream(GoogleCalendar.class.getResourceAsStream("/USIRooms.json")))
-    .createScoped(Collections.singleton(SQLAdminScopes.SQLSERVICE_ADMIN));
-
     //private static String calendarId;
 
-    private static SQLAdmin service;
+    private static com.google.api.services.calendar.Calendar service;
 
     static {
         try {
             HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
             DATA_STORE_FACTORY = new FileDataStoreFactory(DATA_STORE_DIR);
-
             //calendarId = "psl5ie1jhug7m9geanaevl6oi0@group.calendar.google.com";
 
             // Build a new authorized API client service.
@@ -97,8 +89,11 @@ public class GoogleCalendar {
      * @return an authorized Calendar client service
      * @throws IOException
      */
-    public static SQLAdmin getCalendarService() throws IOException {
-        return new SQLAdmin.Builder(HTTP_TRANSPORT, JSON_FACTORY, credential).build();
+    public static com.google.api.services.calendar.Calendar getCalendarService() throws IOException {
+        Credential credential = authorize();
+        return new com.google.api.services.calendar.Calendar.Builder(HTTP_TRANSPORT, JSON_FACTORY, credential)
+                .setApplicationName(APPLICATION_NAME)
+                .build();
     }
 
 

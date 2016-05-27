@@ -19,6 +19,11 @@ public class EventSync{
 
         while((i < localEvents.size() - 1) && (j < onlineEvents.size())){
 
+            // System.out.println(localEvents.get(i));
+            // System.out.println("");
+            // System.out.println(onlineEvents.get(j));
+
+
             if(localEvents.get(i).getStart().getDateTime().getValue() == onlineEvents.get(j).getStart().getDateTime().getValue()
             && isSameLocation(localEvents.get(i), onlineEvents.get(j)) == 0){
                 // same hour and class
@@ -26,6 +31,10 @@ public class EventSync{
                     // If the two events are not equals
                     gc.delete(onlineEvents.get(j), calendarId);
                     gc.write(localEvents.get(i), calendarId);
+
+                    System.out.println(localEvents.get(i));
+                    System.out.println("");
+                    System.out.println(onlineEvents.get(j));
 
                     updated++;
                 }
@@ -37,6 +46,8 @@ public class EventSync{
                 j++;
             }else if(localEvents.get(i).getStart().getDateTime().getValue() < onlineEvents.get(j).getStart().getDateTime().getValue()
             && isSameLocation(localEvents.get(i), onlineEvents.get(j)) == -1){
+                System.out.println(2);
+
                 // local is before
                 gc.write(localEvents.get(i), calendarId);
                 added++;
@@ -46,13 +57,32 @@ public class EventSync{
                 }
                 i++;
             }else{
+                System.out.println(3);
                 gc.delete(onlineEvents.get(j), calendarId);
+                deleted++;
                 j++;
             }
 
         }
 
+        while (i < localEvents.size()){
+            gc.write(localEvents.get(i), calendarId);
+            added++;
+            System.out.println(added);
 
+            i++;
+        }
+
+        while (j < onlineEvents.size()){
+            gc.delete(onlineEvents.get(j), calendarId);
+            deleted++;
+
+            j++;
+        }
+
+        System.out.println(added + " events added");
+        System.out.println(updated + " events updated");
+        System.out.println(deleted + " events deleted");
         // Finish i and j
 
     }
@@ -81,8 +111,20 @@ public class EventSync{
         if (e1JSON != e2JSON) return false;
         if (!(e1.getSummary().equals(e2.getSummary()))) return false;
         if (e1.getEnd().getDateTime().getValue() != e2.getEnd().getDateTime().getValue()) return false;
-        if (!(e1.getDescription().equals(e2.getDescription()))) return false;
-        if (!(e1.getSource().getTitle().equals(e2.getSource().getTitle()))) return false;
+        if (e1.getDescription() != null){
+            if (e2.getDescription() == null){
+                return false;
+            }else if(!(e1.getDescription().equals(e2.getDescription()))){
+                return false;
+            }
+        }
+        if (e1.getSource() != null){
+            if (e2.getSource() == null){
+                return false;
+            }else if(!(e1.getSource().getTitle().equals(e2.getSource().getTitle()))){
+                return false;
+            }
+        }
 
         return true;
     }

@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "flowing-coil-129012",
+  "private_key_id": "f329d1b666840b39206d98f01bc60fd47335c3e2",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDvuUg2aSKGs7oW\n5XuX/sUpzU25XTTjM5De0l3CT5zxvRSsQMKOrAJQelSypXESCG5Iy+kgnfWx3Ch5\n5kWVMIE5wLBFJrtcqdbumDOW6tlWHtcf7cQOZe6S08PlXC/cIUQY19eDtFinBr0X\nh/BXTcjGNV6Urkiaud8sJ+iyweOED1qBP9p5C1T0bqHnOgSLy1nu9zPjlg/Y5o9K\nFhaJXvB6cBX5IYhkljLq3zbyP9/BMZgEr5OJ12PLw550gy6WTCZFL6wN85l1tEQf\ncG51MbIR7SGhvQdy1ISDKawdC6TSjHhTJuVvS0m/Cbu2w17R8Rb7Dg3LigTYhap4\n9EWX2qLFAgMBAAECggEAMK2zGDlpJWlBlHytCERXzRE/gzCGGMzT0ittlpOMDxqS\nJBhSaZ5MKgNtR4mI2FyV6HpfsJvi1GccYQR9hLoAw7V5FdGzojFqz7BgaXjvASnq\nDTW+5h2UwIP3948suMqYhWLvBHOOvPwFUc3s5A2Lg5Q6zH5HiAPOaa0A96ufg6Ul\n46oQ+WdEE3t9/XS5Zr8GIvR9JbYlIMeCwzzdMxlow53tHelit2FzDMO7RvBTVuFV\n6mB7YmF6/eRaB68M7oTx5pgN97ajb6F4s6+dD8D2w1P9hYULv32y8r6y5jEJBWlu\ntDqoSCLG8uCv4XUMTYN0vjyOKKlcOrN4ludVKLNeUQKBgQD4HeL1QuEOMXO4tAJ4\nKJzW2xo1RtIee8wpOIgUM6kfYf/it4tITF7Oj7P2c0XKEU32pI4a6oAHZlTudhrr\nLfrpRiV5t3zjsmclls4wvL/Md3ndYUibjP2ZM2OEqQ6lT9nMZCpT9Clc/dOXQwPT\nUitG4P0vmkeMWVYssQbXnNxE5wKBgQD3VyEYi35tVfSmZHy+uG4NdzosqSrXm36D\nt4jsGRp3DHW56kgjTU5aKBmhZZegb7P8QSb6OMFdyxdHMT94UPdvGNsr9KdHiEQc\nM/yjdJ3I5ZLgCe1u9x/k6qKSxqE3Z0IFKL87enVGcTHHxIYb9G2DH4EMQoE93NW1\ncb/Mn6X5cwKBgQCrqwH87+kHCPAoO2P5/x+FCNN5SSbYMI9xdcuxLo01SXjiRFv6\nCd0Ozh6Vxevjg1WN8QzhUp6CgCsDUnQNhCK2g/Ip5OpkIGt9dnny/qU1svR+V3EF\nLufHt+aDQvT/K+Blqmge7jAwRu6/GX7sF04aHFERPo2Cbc1R3qn9RGqiwQKBgQC9\niml0U8GIq+wVbsAhr1e2vf04qFKKc0BaU9V7iCk9vbChziWF2AIJGN27Tw0JB1DY\nKF1kNwYHiFDIX7cRzoou+s9KOevO51+6dSRPZlhb0YHiafknpf0tAZmf/NMij+CJ\n75XMUKV6W9gYDEPxPDiH2SadbIF6FLc4mniuqFEafQKBgQDhcRURaqnmEz2W5i2s\nj1Q856gAxlBzLCOHv8rVsSMDRg604OZb0BBoSwhWqK6tGPdIdT1W48Uu1eaEKbjP\nm/LIN7CwSGbRALlo10zOffjL+Y5gHWRqM7g/KztdDLd31bMEEpw7AURISdDzc7bn\n6ZgMbYPEFvX3Bis7KwMOUsNbVg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "usi-rooms@flowing-coil-129012.iam.gserviceaccount.com",
+  "client_id": "107105744560596374246",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/usi-rooms%40flowing-coil-129012.iam.gserviceaccount.com"
+}
