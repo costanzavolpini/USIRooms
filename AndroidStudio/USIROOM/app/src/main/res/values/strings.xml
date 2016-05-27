@@ -45,4 +45,41 @@
         <item> Red Building </item>
     </string-array>
 
+    <string-array name="room_blackbuilding">
+            <item>Room SI 003</item>
+            <item>Room SI 004</item>
+            <item>Room SI 006</item>
+            <item>Room SI 007</item>
+            <item>Room SI 008</item>
+            <item>Room SI 013</item>
+            <item>Room SI 015</item>
+    </string-array>
+
+    <string-array name="room_mainbuilding">
+    <item>Room 120</item>
+    <item>Room 128</item>
+    <item>Room 156</item>
+    <item>Room 159</item>
+    <item>Room 250</item>
+    <item>Room 253</item>
+    <item>Room 254</item>
+    <item>Room 354</item>
+    <item>Room 355</item>
+    </string-array>
+
+    <string-array name="room_redbuilding">
+        <item>Room A11</item>
+        <item>Room A12</item>
+        <item>Room A13</item>
+        <item>Room A14</item>
+        <item>Room A21</item>
+        <item>Room A22</item>
+        <item>Room A23</item>
+        <item>Room A24</item>
+        <item>Room A31</item>
+        <item>Room A32</item>
+        <item>Room A33</item>
+        <item>Room A34</item>
+    </string-array>
+
 </resources>

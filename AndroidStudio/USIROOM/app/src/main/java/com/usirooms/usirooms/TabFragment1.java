@@ -1,7 +1,5 @@
 package com.usirooms.usirooms;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,7 +7,10 @@ import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
 
 
 /**
@@ -30,9 +31,9 @@ public class TabFragment1 extends ListFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.tab_fragment_1, container, false);
 
-        String[] values = new String[] { "Room SI 003", "Room SI 004", "Room SI 006", "Room SI 007", "Room SI 008", "Room SI 013", "Room SI 015" };
+        String[] roomblackbuilding = getResources().getStringArray(R.array.room_blackbuilding);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_list_item_1, values);
+                android.R.layout.simple_list_item_1, roomblackbuilding);
         setListAdapter(adapter);
         return rootView;
     }

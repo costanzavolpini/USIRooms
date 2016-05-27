@@ -11,7 +11,7 @@ import android.widget.ArrayAdapter;
 import com.usirooms.usirooms.R;
 
 /**
- * This class must return as cardView (using recyclerView) cards where it appears:
+ * This class must return as cardView (using recyclerView) cards where it a vnm ppears:
  * name of the room that it is actually free, time until is free (example until 17:00), floor where is the room
  * !!!!! RETURN ONLY THE ROOM OF THE BUILDING THAT WE HAVE SELECT FROM THE NAVIGATION VIEW !!!!
  */
@@ -40,6 +40,7 @@ public class FreeRooms extends ListFragment {
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
                     android.R.layout.simple_list_item_1, values);
             setListAdapter(adapter);
+
             return rootView;
         }
     }

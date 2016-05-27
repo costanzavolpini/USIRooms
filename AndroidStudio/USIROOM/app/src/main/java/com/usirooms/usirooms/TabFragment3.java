@@ -19,9 +19,9 @@ public class TabFragment3 extends ListFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.tab_fragment_3, container, false);
 
-        String[] values = new String[] {"Room A11", "Room A12", "Room A13", "Room A14", "Room A21", "Room A22", "Room A23", "Room A24", "Room A31", "Room A32", "Room A33", "Room A34" };
+        String[] redbuilding = getResources().getStringArray(R.array.room_redbuilding);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_list_item_1, values);
+                android.R.layout.simple_list_item_1, redbuilding);
         setListAdapter(adapter);
         return rootView;
     }

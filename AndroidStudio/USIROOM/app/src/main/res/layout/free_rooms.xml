@@ -8,25 +8,28 @@
 
 
 <!--SCRIVERE QUA FREEROOMS -->
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
+    <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#efebe9">
+        android:paddingTop="15dp"
+        android:id="@android:id/list">
+    </ListView>
 
-            <!--<android.support.v7.widget.RecyclerView-->
-            <!--android:id="@+id/rv"-->
+
+    <!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--xmlns:tools="http://schemas.android.com/tools"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--tools:context=".CardViewActivity">-->
+
+        <!--<android.support.v7.widget.RecyclerView-->
+            <!--android:id="@+id/my_recycler_view"-->
             <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent" />-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:scrollbars="vertical"/>-->
 
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingTop="10dp"
-            android:id="@android:id/list">
-        </ListView>
-    </LinearLayout>
+    <!--</RelativeLayout>-->
+
 
 </RelativeLayout>
 
