@@ -19,5 +19,5 @@
         android:paddingLeft="10dp"
         android:nestedScrollingEnabled="true" />
 
-    
+
 </LinearLayout>
