@@ -20,8 +20,3 @@
         android:nestedScrollingEnabled="true" />
 
 </LinearLayout>
-
-
-
-
-    <!--android:background="@drawable/side_nav_bar"-->
