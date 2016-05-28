@@ -1,12 +1,15 @@
 package com.usirooms.usirooms;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ListFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 public class TabFragment1 extends ListFragment {
 
@@ -23,54 +26,19 @@ public class TabFragment1 extends ListFragment {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1, blackbuilding);
         setListAdapter(adapter);
-        return rootView;
+
+        View v = inflater.inflate(R.layout.tab_fragment_1, container, false);
+
+
+        return v;
     }
 
-//    ListView list = getListView();
-//
-//
-//    ListView list = getListView();
-//    list.setOnItemClickListener(new AdapterView.OnItemClickListener()
-//
-//    {
-//        @Override
-//        public void onItemClick (AdapterView < ? > parent, View view,int position, long id){
-//        Object listItem = list.getItemAtPosition(position);
-//        Intent myIntent = new Intent(TabFragment1.this, room.class);
-//        //  myIntent.putExtra("key", value); //parametri da passare se ti servono
-//        TabFragment1.this.startActivity(myIntent);
-//    }
-//    }
-//    );
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id) {
+        Log.i("Info", "TEST");
+        Intent singleRoom = new Intent(getActivity(), singleRoom.class);
+        startActivity(singleRoom);
+    }
+
 }
-
-
-
-
-//        if (list.getSelectedItemPosition() == 0){
-//            return View.inflate(R.layout.room_specifiche, container, false);
-//
-//        } else if(list.getSelectedItemPosition() == 1){
-//            //layout
-//
-//        }else if(list.getSelectedItemPosition() == 2){
-//            //layout
-//
-//        }else if(list.getSelectedItemPosition() == 3){
-//            //layout
-//
-//        }else if(list.getSelectedItemPosition() == 4){
-//            //layout
-//
-//        }else if(list.getSelectedItemPosition() == 5){
-//            //layout
-//
-//        }else if(list.getSelectedItemPosition() == 6){
-//            //layout
-//
-//        }else if(list.getSelectedItemPosition() == 7){
-//            //layout
-//
-//        }
-//
 
