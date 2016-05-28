@@ -12,20 +12,20 @@
     <string name="name_event">CSS LIVE</string>
 
     <!--Set your favorite Building-->
-    <string-array name="Set_your_Building">
+    <string-array name="spinnerStrings">
         <item> Main Building </item>
         <item> Black Building </item>
         <item> Red Building </item>
     </string-array>
 
     <string-array name="room_blackbuilding">
-            <item>Room SI 003</item>
-            <item>Room SI 004</item>
-            <item>Room SI 006</item>
-            <item>Room SI 007</item>
-            <item>Room SI 008</item>
-            <item>Room SI 013</item>
-            <item>Room SI 015</item>
+        <item>Room SI 003</item>
+        <item>Room SI 004</item>
+        <item>Room SI 006</item>
+        <item>Room SI 007</item>
+        <item>Room SI 008</item>
+        <item>Room SI 013</item>
+        <item>Room SI 015</item>
     </string-array>
 
     <string-array name="room_mainbuilding">

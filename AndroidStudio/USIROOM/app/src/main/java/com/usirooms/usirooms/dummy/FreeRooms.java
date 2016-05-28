@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
+import com.usirooms.usirooms.MainActivity;
 import com.usirooms.usirooms.R;
 
 /**
@@ -34,13 +35,13 @@ public class FreeRooms extends ListFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.free_rooms, container, false);
+        View rootView = inflater.inflate(R.layout.free_rooms, container, false);
 
-            String[] values = new String[] { "Food", "Fuel", "Travel", "Stuff", "Repairs","Food", "Fuel", "Travel", "Stuff","Food", "Fuel", "Travel", "Stuff","Food", "Fuel", "Travel", "Stuff","Food", "Fuel", "Travel", "Stuff","Food", "Fuel", "Travel", "Stuff","Food", "Fuel", "Travel", "Stuff","Food", "Fuel", "Travel" };
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
-                    android.R.layout.simple_list_item_1, values);
-            setListAdapter(adapter);
+        String[] values = new String[] { "Food", "Fuel", "Travel", "Stuff", "Repairs","Food", "Fuel", "Travel", "Stuff", MainActivity.favouriteBuilding, "Fuel", "Travel", "Stuff","Food", "Fuel", "Travel", "Stuff","Food", "Fuel", "Travel", "Stuff","Food", "Fuel", "Travel", "Stuff","Food", "Fuel", "Travel", "Stuff","Food", "Fuel", "Travel" };
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_list_item_1, values);
+        setListAdapter(adapter);
 
-            return rootView;
-        }
+        return rootView;
     }
+}

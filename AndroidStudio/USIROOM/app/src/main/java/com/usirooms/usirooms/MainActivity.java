@@ -19,6 +19,8 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,11 +33,15 @@ import com.usirooms.usirooms.dummy.byRoom;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    public static String favouriteBuilding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -51,7 +57,11 @@ public class MainActivity extends AppCompatActivity
             navigationView.getMenu().performIdentifierAction(R.id.nav_free_rooms, 0);
         }
 
+        favouriteBuilding = getResources().getStringArray(R.array.spinnerStrings)[0];
+
+
     }
+
 
     public void credits(View v){
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
@@ -101,11 +111,6 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l){
-        TextView myText = (TextView) view;
-        Toast.makeText(this, "You Selected"+myText.getText(), Toast.LENGTH_SHORT).show();
-    }
-
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -146,6 +151,7 @@ public class MainActivity extends AppCompatActivity
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+
         return true;
     }
 }
