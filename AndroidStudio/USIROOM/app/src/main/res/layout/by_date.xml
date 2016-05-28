@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:id="@+id/calendarLayout"
+    android:layout_marginTop="?attr/actionBarSize"
     android:background="#ffffff">
 
     <!--After the CalendarView when we select a date it will appear the information-->
@@ -16,7 +17,6 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="79dp"
         android:contextClickable="true" />
 
 </RelativeLayout>

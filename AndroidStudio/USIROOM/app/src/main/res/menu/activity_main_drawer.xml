@@ -10,10 +10,6 @@
         <item
             android:id="@+id/nav_date"
             android:icon="@drawable/ic_by_date"
-            android:title="By Date" />
-        <item
-            android:id="@+id/nav_event"
-            android:icon="@drawable/ic_by_event"
             android:title="By Event" />
         <item
             android:id="@+id/nav_room"

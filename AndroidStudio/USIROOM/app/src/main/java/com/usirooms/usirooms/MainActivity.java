@@ -1,6 +1,5 @@
 package com.usirooms.usirooms;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -20,14 +19,11 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.usirooms.usirooms.dummy.FreeRooms;
 import com.usirooms.usirooms.dummy.byDate;
-import com.usirooms.usirooms.dummy.byEvent;
 import com.usirooms.usirooms.dummy.byRoom;
 
 
@@ -155,11 +151,6 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_date) {
             fragment = new byDate();
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.relativeLayout, fragment).commit();
-
-        } else if (id == R.id.nav_event) {
-            fragment = new byEvent();
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.relativeLayout, fragment).commit();
         }
