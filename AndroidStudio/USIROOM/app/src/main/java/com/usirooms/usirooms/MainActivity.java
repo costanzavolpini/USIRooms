@@ -1,5 +1,6 @@
 package com.usirooms.usirooms;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -59,7 +60,30 @@ public class MainActivity extends AppCompatActivity
 
         favouriteBuilding = getResources().getStringArray(R.array.spinnerStrings)[0];
 
+        View spinnerView = navigationView.inflateHeaderView(R.layout.nav_header_main);
+        Spinner spin = (Spinner) spinnerView.findViewById(R.id.spin);
 
+        spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                // your code here
+                if (position == 0){
+                    favouriteBuilding = "Main Building";
+                }else if(position == 1){
+                    favouriteBuilding = "Black Building";
+                }else if(position == 2){
+                    favouriteBuilding = "Red Building";
+                }
+
+                Log.i("Info", "Changed building preference");
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
+        });
     }
 
 
