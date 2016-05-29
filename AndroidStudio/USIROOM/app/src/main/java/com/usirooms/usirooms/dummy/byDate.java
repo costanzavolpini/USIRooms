@@ -94,7 +94,7 @@ public class byDate extends Fragment {
         // 5. set item animator to DefaultAnimator
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        System.out.println("***********Perché non vai porca puttana**************");
+        //System.out.println("***********Perché non vai porca puttana**************");
 
         eventList.clear();
 
