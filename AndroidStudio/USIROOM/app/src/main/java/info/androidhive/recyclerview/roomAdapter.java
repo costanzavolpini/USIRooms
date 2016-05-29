@@ -11,7 +11,7 @@ import com.usirooms.usirooms.R;
 
 import java.util.List;
 /**
- * Created by michelelustro on 24/05/16.
+ * Room adapter to show how the card looks.
  */
 public class roomAdapter extends RecyclerView.Adapter<roomAdapter.MyViewHolder> {
 
@@ -57,4 +57,6 @@ public class roomAdapter extends RecyclerView.Adapter<roomAdapter.MyViewHolder> 
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
     }
+
+
 }

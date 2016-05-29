@@ -3,22 +3,20 @@ package com.usirooms.usirooms.dummy;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.ListFragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 
-import com.usirooms.usirooms.MainActivity;
 import com.usirooms.usirooms.R;
 
 import java.util.ArrayList;
 import java.util.List;
-import info.androidhive.recyclerview.roomData;
+
 import info.androidhive.recyclerview.roomAdapter;
+import info.androidhive.recyclerview.roomData;
 
 
 /**
@@ -29,7 +27,18 @@ import info.androidhive.recyclerview.roomAdapter;
 public class FreeRooms extends Fragment {
     private List<roomData> roomList = new ArrayList<>();
     private RecyclerView recyclerView;
+    private LinearLayoutManager mLinearLayoutManager;
     private roomAdapter rAdapter;
+
+
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        // 1.
+        rAdapter = new roomAdapter(roomList);
+    }
 
     @Nullable
     @Override
@@ -37,28 +46,33 @@ public class FreeRooms extends Fragment {
 
 
         View rootView = inflater.inflate(R.layout.free_rooms, container, false);
+
+
         // 1. get a reference to recyclerView
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
 
         // 2. set layoutManger
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-        prepareRoomData();
+        mLinearLayoutManager = new LinearLayoutManager(getActivity());
+        mLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setHasFixedSize(true); //
+        recyclerView.setLayoutManager(mLinearLayoutManager);
 
 
         // 3. create an adapter
-        rAdapter = new roomAdapter(roomList);
+//        rAdapter = new roomAdapter(roomList);
         // 4. set adapter
         recyclerView.setAdapter(rAdapter);
         // 5. set item animator to DefaultAnimator
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        return rootView;
+        prepareRoomData();
 
+
+        return rootView;
     }
 
 
-    private void prepareRoomData() {
+     private void prepareRoomData() {
 
         roomData room008 = new roomData("008");
         roomList.add(room008);
@@ -70,4 +84,11 @@ public class FreeRooms extends Fragment {
         roomList.add(room003);
 
     }
+
+    public void onResume() {
+        super.onResume();
+        recyclerView.setAdapter(rAdapter);
+        rAdapter.notifyDataSetChanged();
+    }
+
 }
