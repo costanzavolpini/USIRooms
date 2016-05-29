@@ -3,6 +3,7 @@ package com.usirooms.usirooms;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -15,9 +16,13 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -25,12 +30,17 @@ import android.widget.TextView;
 import com.usirooms.usirooms.dummy.FreeRooms;
 import com.usirooms.usirooms.dummy.byDate;
 import com.usirooms.usirooms.dummy.byRoom;
+import com.usirooms.usirooms.events.Events;
+import com.usirooms.usirooms.events.Rooms;
+import com.usirooms.usirooms.events.dummyEvent;
 
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     public static String favouriteBuilding;
+    public static Rooms rooms = new Rooms();
+    public static Events events = new Events();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,9 +75,10 @@ public class MainActivity extends AppCompatActivity
                 // your code here
                 if (position == 0){
                     favouriteBuilding = "Main Building";
-                }else if(position == 1){
+
+                } else if (position == 1) {
                     favouriteBuilding = "Black Building";
-                }else if(position == 2){
+                } else if (position == 2){
                     favouriteBuilding = "Red Building";
                 }
 
@@ -80,6 +91,7 @@ public class MainActivity extends AppCompatActivity
             }
 
         });
+
     }
 
 
