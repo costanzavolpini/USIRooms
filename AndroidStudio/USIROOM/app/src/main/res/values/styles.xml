@@ -28,4 +28,10 @@
         <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
+    <style name="RedTheme" parent="Theme.AppCompat.Light.NoActionBar" >
+        <item name="colorPrimary">@android:color/holo_red_dark</item>
+    </style>
+
+    <style name="BlackTheme" parent="Theme.AppCompat.Light.NoActionBar" />
+
 </resources>
