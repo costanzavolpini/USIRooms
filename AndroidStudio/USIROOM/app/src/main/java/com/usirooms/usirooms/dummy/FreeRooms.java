@@ -6,12 +6,13 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.usirooms.usirooms.MainActivity;
 import com.usirooms.usirooms.R;
+import com.usirooms.usirooms.events.dummyRoom;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,14 +77,9 @@ public class FreeRooms extends Fragment {
 
      private void prepareRoomData() {
 
-        roomData room008 = new roomData("008");
-        roomList.add(room008);
-
-        roomData room006 = new roomData("006");
-        roomList.add(room006);
-
-        roomData room003 = new roomData("003");
-        roomList.add(room003);
+         for (dummyRoom dr : MainActivity.rooms.getRooms()){
+             roomList.add(new roomData("Room" + dr.getName()));
+         }
 
     }
 
