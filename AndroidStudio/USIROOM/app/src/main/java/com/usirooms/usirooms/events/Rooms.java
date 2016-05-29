@@ -55,10 +55,19 @@ public class Rooms {
         return null;
     }
 
-    public dummyRoom getRoom(int id) {
+    public dummyRoom getRoom(int id){
         // given the id of the room, return the dummy room
         for (dummyRoom room : rooms){
-            if (room.getId() == (id)){
+            if (room.getId() == id){
+                return room;
+            }
+        }
+        return null;
+    }
+
+    public dummyRoom getRoomBuilding(String building){
+        for (dummyRoom room : rooms){
+            if (room.getBuilding().equals(building)){
                 return room;
             }
         }

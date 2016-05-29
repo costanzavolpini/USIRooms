@@ -3,7 +3,6 @@ package com.usirooms.usirooms;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -16,13 +15,9 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.ContextThemeWrapper;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -32,7 +27,6 @@ import com.usirooms.usirooms.dummy.byDate;
 import com.usirooms.usirooms.dummy.byRoom;
 import com.usirooms.usirooms.events.Events;
 import com.usirooms.usirooms.events.Rooms;
-import com.usirooms.usirooms.events.dummyEvent;
 
 
 public class MainActivity extends AppCompatActivity
@@ -48,7 +42,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -181,4 +174,5 @@ public class MainActivity extends AppCompatActivity
 
         return true;
     }
+
 }

@@ -7,6 +7,7 @@ import com.usirooms.usirooms.MainActivity;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by Marco on 5/29/16.
@@ -21,6 +22,10 @@ public class Events {
         try {
             events.addAll(is.analyze("bachelor_inf_3_year.json"));
 
+
+
+            Collections.sort(events, new DateTimeComparator());
+
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ParseException e) {
@@ -29,14 +34,6 @@ public class Events {
 
     }
 
-    /**
-     public class SortEventsByStart implements Comparator<Events> {
-    @Override
-    public int compare(dummyEvent e1, dummyEvent e2) {
-    return e1.getStart().compareTo(e2.getStart());
-    }
-    }
-     */
 
     public ArrayList<dummyEvent> getEvents(){
         return events;
@@ -55,7 +52,16 @@ public class Events {
     }
 
 
-    public ArrayList<Events> getFreeRoom (int date, String building){
+    public ArrayList<dummyRoom> getFreeRoom (long date, String building){
+        Rooms rooms = MainActivity.rooms;
+        ArrayList<dummyRoom> freeRooms = new ArrayList<>();
+
+        for (dummyEvent event : events){
+            if (event.getEnd() > date + 1800){
+
+            }
+        }
+
 
         return null;
     }
