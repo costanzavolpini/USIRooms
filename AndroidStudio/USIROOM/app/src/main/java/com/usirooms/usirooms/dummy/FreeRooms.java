@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,6 +62,7 @@ public class FreeRooms extends Fragment {
         // 3. create an adapter
 //        rAdapter = new roomAdapter(roomList);
         // 4. set adapter
+
         recyclerView.setAdapter(rAdapter);
         // 5. set item animator to DefaultAnimator
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -90,5 +92,6 @@ public class FreeRooms extends Fragment {
         recyclerView.setAdapter(rAdapter);
         rAdapter.notifyDataSetChanged();
     }
+
 
 }
