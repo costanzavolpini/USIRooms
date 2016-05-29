@@ -1,5 +1,6 @@
 package info.androidhive.recyclerview;
 
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.usirooms.usirooms.R;
+import com.usirooms.usirooms.singleRoom;
 
 import java.util.List;
 /**
@@ -21,10 +23,16 @@ public class roomAdapter extends RecyclerView.Adapter<roomAdapter.MyViewHolder> 
         public CardView cardView;
         public TextView roomNumber;
 
-        public MyViewHolder(View view) {
+        public MyViewHolder(final View view) {
             super(view);
             cardView = (CardView) view.findViewById(R.id.card_view);
             roomNumber = (TextView) view.findViewById(R.id.room_number);
+            view.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view1){
+                    view.getContext().startActivity(new Intent(view.getContext(),singleRoom.class));
+                }
+            });
         }
     }
 
