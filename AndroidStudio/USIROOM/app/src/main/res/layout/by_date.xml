@@ -3,7 +3,7 @@
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:id="@+id/calendarLayout"
     android:layout_marginTop="?attr/actionBarSize"
-    android:background="#ffffff">
+    android:background="#eceff1">
 
     <!--After the CalendarView when we select a date it will appear the information-->
     <!--about that day: which rooms are free, if there are events.-->
@@ -17,6 +17,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:background="#ffffff"
         android:contextClickable="true" />
 
     <android.support.v7.widget.RecyclerView

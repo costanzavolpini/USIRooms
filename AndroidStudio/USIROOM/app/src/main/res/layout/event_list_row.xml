@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -9,9 +10,14 @@
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        app:cardUseCompatPadding="true"
+        app:cardUseCompatPadding="false"
+        android:layout_marginTop="1dp"
         android:layout_height="wrap_content"
         android:id="@+id/card_view_event"
+        app:cardBackgroundColor="@color/cardview_light_background"
+        app:cardCornerRadius="@dimen/cardview_compat_inset_shadow"
+        app:cardMaxElevation="@dimen/cardview_compat_inset_shadow"
+        card_view:cardBackgroundColor="#E6E6E6"
         >
 
         <RelativeLayout
@@ -25,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/event_type"
                 android:layout_alignParentTop="true"
-                android:textSize="30sp"
+                android:textSize="15dp"
                 />
 
         </RelativeLayout>
