@@ -1,6 +1,8 @@
 package com.usirooms.usirooms;
 
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -32,12 +34,27 @@ import com.usirooms.usirooms.events.Rooms;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    public static String favouriteBuilding;
     public static Rooms rooms = new Rooms();
     public static Events events = new Events();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        final String favouriteBuilding = CacheManager.readAllCachedText(this, "preferences.txt");
+        Log.i("Info", "Theme selected: " + favouriteBuilding);
+
+        if (favouriteBuilding == null) {
+            CacheManager.writeAllCachedText(this, "preferences.txt", "Main Building");
+        }
+
+        if (favouriteBuilding.equals("Black Building")){
+            setTheme(R.style.BlackTheme);
+        } else if (favouriteBuilding.equals("Red Building")){
+            setTheme(R.style.RedTheme);
+        } else {
+            setTheme(R.style.OrangeTheme);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -57,8 +74,6 @@ public class MainActivity extends AppCompatActivity
             navigationView.getMenu().performIdentifierAction(R.id.nav_free_rooms, 0);
         }
 
-        favouriteBuilding = getResources().getStringArray(R.array.spinnerStrings)[0];
-
         View spinnerView = navigationView.inflateHeaderView(R.layout.nav_header_main);
         Spinner spin = (Spinner) spinnerView.findViewById(R.id.spin);
 
@@ -66,13 +81,19 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 // your code here
-                if (position == 0){
-                    favouriteBuilding = "Main Building";
 
-                } else if (position == 1) {
-                    favouriteBuilding = "Black Building";
-                } else if (position == 2){
-                    favouriteBuilding = "Red Building";
+                Log.i("Info", "Position: " + position + " Theme: " + favouriteBuilding);
+
+                if (position == 0 && !favouriteBuilding.equals("Main Building") && favouriteBuilding != null) {
+                    CacheManager.writeAllCachedText(getApplicationContext(), "preferences.txt", "Main Building");
+                    recreate();
+                } else if (position == 1 && !favouriteBuilding.equals("Black Building")){
+                    CacheManager.writeAllCachedText(getApplicationContext(), "preferences.txt", "Black Building");
+
+                    recreate();
+                } else if (position == 2 && !favouriteBuilding.equals("Red Building")){
+                    CacheManager.writeAllCachedText(getApplicationContext(), "preferences.txt", "Red Building");
+                    recreate();
                 }
 
                 Log.i("Info", "Changed building preference");
