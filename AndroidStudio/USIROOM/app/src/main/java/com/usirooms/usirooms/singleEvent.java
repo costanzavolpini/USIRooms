@@ -1,6 +1,8 @@
 package com.usirooms.usirooms;
 
 import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -22,6 +24,10 @@ public class singleEvent extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+      //  getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_cross);
+        final Drawable upArrow = getResources().getDrawable(R.drawable.ic_cross);
+        upArrow.setColorFilter(getResources().getColor(R.color.gray), PorterDuff.Mode.SRC_ATOP);
+        getSupportActionBar().setHomeAsUpIndicator(upArrow);
 
         tv = (TextView) findViewById(R.id.single_event_room);
 
