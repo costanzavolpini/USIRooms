@@ -40,14 +40,13 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
 
         if (CacheManager.readAllCachedText(this, "preferences.txt") == null){
-            CacheManager.writeAllCachedText(this, "preferences.txt", "Main Building");
+            CacheManager.writeAllCachedText(this, "preferences.txt", "Main Building#N");
             Log.i("Cache", "NULL CACHE");
         }
 
-        final String favouriteBuilding = CacheManager.readAllCachedText(this, "preferences.txt");
+        final String favouriteBuilding = CacheManager.readAllCachedText(this, "preferences.txt").split("#")[0];
 
         Log.i("Theme", "Theme selected: " + favouriteBuilding);
-        Log.i("Cache", "Cache selected: " + CacheManager.readAllCachedText(this, "preferences.txt"));
 
         if (favouriteBuilding.equals("Black Building")){
             setTheme(R.style.BlackTheme);
@@ -141,7 +140,17 @@ public class MainActivity extends AppCompatActivity
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
+
+
+        if (CacheManager.readAllCachedText(this, "preferences.txt").split("#")[1].equals("Y")){
+            Log.i("Theme", "Showing opened drawer");
+
+            CacheManager.writeAllCachedText(getApplicationContext(), "preferences.txt", CacheManager.readAllCachedText(this, "preferences.txt").split("#")[0] + "#N");
+            drawer.openDrawer(GravityCompat.START);
+
+        }else {
+            drawer.closeDrawer(GravityCompat.START);
+        }
 
         return true;
     }
@@ -165,21 +174,21 @@ public class MainActivity extends AppCompatActivity
                 Log.i("Theme", "Position: " + position + " Theme: " + favouriteBuilding);
 
                 if (position == 0 && !favouriteBuilding.equals("Main Building")){
-                    CacheManager.writeAllCachedText(getApplicationContext(), "preferences.txt", "Main Building");
+                    CacheManager.writeAllCachedText(getApplicationContext(), "preferences.txt", "Main Building#Y");
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                     overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
 
                     finish();
                 } else if (position == 1 && !favouriteBuilding.equals("Black Building")){
-                    CacheManager.writeAllCachedText(getApplicationContext(), "preferences.txt", "Black Building");
+                    CacheManager.writeAllCachedText(getApplicationContext(), "preferences.txt", "Black Building#Y");
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                     overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
 
                     finish();
                 } else if (position == 2 && !favouriteBuilding.equals("Red Building")){
-                    CacheManager.writeAllCachedText(getApplicationContext(), "preferences.txt", "Red Building");
+                    CacheManager.writeAllCachedText(getApplicationContext(), "preferences.txt", "Red Building#Y");
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                     overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
