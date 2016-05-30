@@ -76,8 +76,17 @@ public class MainActivity extends AppCompatActivity
             navigationView.getMenu().performIdentifierAction(R.id.nav_free_rooms, 0);
         }
 
+
         View spinnerView = navigationView.inflateHeaderView(R.layout.nav_header_main);
         spinnerManager(favouriteBuilding, spinnerView);
+
+        if (favouriteBuilding.equals("Black Building")){
+            spinnerView.setBackgroundResource(R.mipmap.blackbuilding1);
+        } else if (favouriteBuilding.equals("Red Building")){
+            spinnerView.setBackgroundResource(R.mipmap.redbuilding2);
+        } else {
+            spinnerView.setBackgroundResource(R.mipmap.mainbuilding);
+        }
 
     }
 
