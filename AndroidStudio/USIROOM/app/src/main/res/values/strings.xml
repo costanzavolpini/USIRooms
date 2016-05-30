@@ -13,6 +13,7 @@
 
     <!-- Lorem ipsum placeholder for the event description -->
     <string name="event_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultricies in erat id egestas. Duis vel lorem vitae odio fringilla accumsan at et ligula. Phasellus vestibulum, ligula ut ultricies egestas, enim elit viverra quam, a vulputate sem metus vel orci. Vestibulum varius tincidunt nibh id consectetur. Duis in hendrerit tortor. Maecenas sed arcu lacus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Proin dictum leo scelerisque turpis congue, ut fringilla ante pulvinar. Integer quam mi, efficitur vitae feugiat eget, condimentum id velit. Aliquam erat volutpat. Morbi non eleifend nulla, feugiat vulputate magna. Vivamus iaculis nisi nisi, nec condimentum mauris vulputate in. Aliquam lorem risus, convallis quis metus ac, interdum auctor lorem. Fusce id lorem iaculis elit varius fermentum. Cras ac lectus non risus rhoncus eleifend.</string>
+    <string name="event_holder_room">This event takes place in room SI-006</string>
 
     <!--Set your favorite Building-->
     <string-array name="spinnerStrings">
