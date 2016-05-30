@@ -1,6 +1,7 @@
 package com.usirooms.usirooms;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -150,13 +151,19 @@ public class MainActivity extends AppCompatActivity
 
                 if (position == 0 && !favouriteBuilding.equals("Main Building")){
                     CacheManager.writeAllCachedText(getApplicationContext(), "preferences.txt", "Main Building");
-                    recreate();
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                    finish();
                 } else if (position == 1 && !favouriteBuilding.equals("Black Building")){
                     CacheManager.writeAllCachedText(getApplicationContext(), "preferences.txt", "Black Building");
-                    recreate();
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                    finish();
                 } else if (position == 2 && !favouriteBuilding.equals("Red Building")){
                     CacheManager.writeAllCachedText(getApplicationContext(), "preferences.txt", "Red Building");
-                    recreate();
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                    finish();
                 }
 
                 Log.i("Theme", "Changed theme preference");
