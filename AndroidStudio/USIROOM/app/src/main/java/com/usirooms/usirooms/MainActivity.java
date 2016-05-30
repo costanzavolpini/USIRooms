@@ -38,12 +38,15 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        final String favouriteBuilding = CacheManager.readAllCachedText(this, "preferences.txt");
-        Log.i("Info", "Theme selected: " + favouriteBuilding);
-
-        if (favouriteBuilding == null) {
+        if (CacheManager.readAllCachedText(this, "preferences.txt") == null){
             CacheManager.writeAllCachedText(this, "preferences.txt", "Main Building");
+            Log.i("Cache", "NULL CACHE");
         }
+
+        final String favouriteBuilding = CacheManager.readAllCachedText(this, "preferences.txt");
+
+        Log.i("Theme", "Theme selected: " + favouriteBuilding);
+        Log.i("Cache", "Cache selected: " + CacheManager.readAllCachedText(this, "preferences.txt"));
 
         if (favouriteBuilding.equals("Black Building")){
             setTheme(R.style.BlackTheme);
@@ -52,6 +55,7 @@ public class MainActivity extends AppCompatActivity
         } else {
             setTheme(R.style.OrangeTheme);
         }
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -73,75 +77,8 @@ public class MainActivity extends AppCompatActivity
         }
 
         View spinnerView = navigationView.inflateHeaderView(R.layout.nav_header_main);
-        Spinner spin = (Spinner) spinnerView.findViewById(R.id.spin);
+        spinnerManager(favouriteBuilding, spinnerView);
 
-        spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                // your code here
-
-                Log.i("Info", "Position: " + position + " Theme: " + favouriteBuilding);
-
-                if (favouriteBuilding != null && position == 0 && !favouriteBuilding.equals("Main Building")) {
-                    CacheManager.writeAllCachedText(getApplicationContext(), "preferences.txt", "Main Building");
-                    recreate();
-                } else if (favouriteBuilding != null && position == 1 && !favouriteBuilding.equals("Black Building")){
-                    CacheManager.writeAllCachedText(getApplicationContext(), "preferences.txt", "Black Building");
-
-                    recreate();
-                } else if (favouriteBuilding != null && position == 2 && !favouriteBuilding.equals("Red Building")){
-                    CacheManager.writeAllCachedText(getApplicationContext(), "preferences.txt", "Red Building");
-                    recreate();
-                }
-
-                Log.i("Info", "Changed building preference");
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-                // your code here
-            }
-
-        });
-
-    }
-
-    public void credits(View v){
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-
-        TextView title = new TextView(this);
-        // You Can Customise your Title here
-        title.setText("Credits");
-        title.setPadding(0, 35, 0, -7);
-        title.setGravity(Gravity.CENTER);
-        title.setTextColor(Color.DKGRAY);
-        title.setTextSize(20);
-        title.setTypeface(Typeface.DEFAULT_BOLD, 1);
-
-        // set title
-        alertDialogBuilder.setCustomTitle(title);
-
-        // set dialog message
-        alertDialogBuilder
-                .setMessage("Costanza Volpini\nMarco Tollini" +
-                        "\nMichele Lustro\nThomas Del Prete")
-                .setCancelable(false)
-
-                .setNegativeButton("Close", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-
-        // create alert dialog
-        AlertDialog dialog = alertDialogBuilder.show();
-
-        TextView messageText = (TextView)dialog.findViewById(android.R.id.message);
-        messageText.setGravity(Gravity.CENTER);
-
-        dialog.show();
-
-        Log.i("info", "Credits clicked");
     }
 
     @Override
@@ -191,6 +128,84 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
 
         return true;
+    }
+
+    private void spinnerManager(final String favouriteBuilding, final View spinnerView){
+
+        Spinner spin = (Spinner) spinnerView.findViewById(R.id.spin);
+        if (favouriteBuilding.equals("Black Building")){
+            spin.setSelection(1);
+        }else if(favouriteBuilding.equals("Red Building")){
+            spin.setSelection(2);
+        }else{
+            spin.setSelection(0);
+        }
+
+        spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                // your code here
+
+                Log.i("Theme", "Position: " + position + " Theme: " + favouriteBuilding);
+
+                if (position == 0 && !favouriteBuilding.equals("Main Building")){
+                    CacheManager.writeAllCachedText(getApplicationContext(), "preferences.txt", "Main Building");
+                    recreate();
+                } else if (position == 1 && !favouriteBuilding.equals("Black Building")){
+                    CacheManager.writeAllCachedText(getApplicationContext(), "preferences.txt", "Black Building");
+                    recreate();
+                } else if (position == 2 && !favouriteBuilding.equals("Red Building")){
+                    CacheManager.writeAllCachedText(getApplicationContext(), "preferences.txt", "Red Building");
+                    recreate();
+                }
+
+                Log.i("Theme", "Changed theme preference");
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
+        });
+    }
+
+    public void credits(View v){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+        TextView title = new TextView(this);
+        // You Can Customise your Title here
+        title.setText("Credits");
+        title.setPadding(0, 35, 0, -7);
+        title.setGravity(Gravity.CENTER);
+        title.setTextColor(Color.DKGRAY);
+        title.setTextSize(20);
+        title.setTypeface(Typeface.DEFAULT_BOLD, 1);
+
+        // set title
+        alertDialogBuilder.setCustomTitle(title);
+
+        // set dialog message
+        alertDialogBuilder
+                .setMessage("Costanza Volpini\nMarco Tollini" +
+                        "\nMichele Lustro\nThomas Del Prete")
+                .setCancelable(false)
+
+                .setNegativeButton("Close", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        // create alert dialog
+        AlertDialog dialog = alertDialogBuilder.show();
+
+        TextView messageText = (TextView)dialog.findViewById(android.R.id.message);
+        messageText.setGravity(Gravity.CENTER);
+
+        dialog.show();
+
+        Log.i("info", "Credits clicked");
     }
 
 }
