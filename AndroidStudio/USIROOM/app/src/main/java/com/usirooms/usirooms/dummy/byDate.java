@@ -1,5 +1,6 @@
 package com.usirooms.usirooms.dummy;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -49,11 +50,17 @@ public class byDate extends Fragment {
 
         cv = (CalendarView) rootView.findViewById(R.id.calendarView);
         date = cv.getDate();
+        cv.setClickable(true);
 
         cv.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener(){
             @Override
-            public void onGlobalLayout()
-            {
+            public void onGlobalLayout() {
+                if (cv.getDate() != date) {
+                    date = cv.getDate();
+                    Log.i("Info", "Ti supplico vaiiiiiii");
+                    prepareEventData();
+                }
+
                 cv.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -64,19 +71,20 @@ public class byDate extends Fragment {
                         prepareEventData();
                     }
                 });
-
-                cv.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-                    @Override
-                    public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-                        if (cv.getDate() != date){
-                            Log.i("Info", "Clicked event");
-                            date = cv.getDate();
-                            prepareEventData();
-
-                        }
-                    }
-                });
             }
+//
+//                cv.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+//                    @Override
+//                    public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
+//                        if (cv.getDate() != date){
+//                            Log.i("Info", "Clicked event");
+//                            date = cv.getDate();
+//                            prepareEventData();
+//
+//                        }
+//                    }
+//                });
+//            }
         });
 
 
