@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
 
@@ -45,17 +46,28 @@ public class byDate extends Fragment {
 
         cv = (CalendarView) rootView.findViewById(R.id.calendarView);
         date = cv.getDate();
-        cv.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+        cv.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-                if (cv.getDate() != date){
-                    Log.i("Info", "Clicked event");
-                    date = cv.getDate();
-                    prepareEventData();
-
-                }
+            public void onClick(View v) {
+                Log.i("Info", "Clicked event");
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTimeInMillis(date);
+                Log.i("Info", "Clicked event");
+                prepareEventData();
             }
         });
+
+//        cv.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+//            @Override
+//            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
+//                if (cv.getDate() != date){
+//                    Log.i("Info", "Clicked event");
+//                    date = cv.getDate();
+//                    prepareEventData();
+//
+//                }
+//            }
+//        });
 
         // 1. get a reference to recyclerView
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view_calendar);
