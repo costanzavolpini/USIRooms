@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity
             setTheme(R.style.OrangeTheme);
         }
 
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -153,16 +152,22 @@ public class MainActivity extends AppCompatActivity
                     CacheManager.writeAllCachedText(getApplicationContext(), "preferences.txt", "Main Building");
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
+                    overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+
                     finish();
                 } else if (position == 1 && !favouriteBuilding.equals("Black Building")){
                     CacheManager.writeAllCachedText(getApplicationContext(), "preferences.txt", "Black Building");
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
+                    overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+
                     finish();
                 } else if (position == 2 && !favouriteBuilding.equals("Red Building")){
                     CacheManager.writeAllCachedText(getApplicationContext(), "preferences.txt", "Red Building");
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
+                    overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+
                     finish();
                 }
 
@@ -211,7 +216,6 @@ public class MainActivity extends AppCompatActivity
         messageText.setGravity(Gravity.CENTER);
 
         dialog.show();
-
         Log.i("info", "Credits clicked");
     }
 
