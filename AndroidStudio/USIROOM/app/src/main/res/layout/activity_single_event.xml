@@ -10,4 +10,34 @@
     tools:context="com.usirooms.usirooms.singleEvent"
     android:background="#ffffff">
 
+    <include layout="@layout/single_event"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="60dp"-->
+        <!--android:text="@string/name_event"-->
+        <!--android:textSize="30sp"-->
+        <!--android:id="@+id/textView3" />-->
+
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="211dp"-->
+        <!--android:text="@string/event_description"-->
+        <!--android:textSize="12sp"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:layout_below="@+id/textView3"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentStart="true" />-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/single_event_room"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/room_event"/>-->
+
 </RelativeLayout>
