@@ -1,62 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:padding="0dp"
     android:layout_margin="0dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:text="@string/name_event"
-        android:textSize="30sp"
-        android:id="@+id/textView3"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:gravity="center"
-        android:paddingLeft="16dp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/event_description"
-            android:textSize="12sp"
-            android:layout_gravity="center"
-            android:layout_below="@+id/textView3"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:id="@+id/textView5"
-            android:paddingRight="16dp"
-            android:paddingLeft="16dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:text="@string/name_event"
+                android:textSize="30sp"
+                android:id="@+id/textView3"
+                android:gravity="center"
+                android:paddingLeft="25dp"
+                android:layout_marginTop="30dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/event_description"
+                android:textSize="14sp"
+                android:layout_gravity="center"
+                android:id="@+id/textView5"
+                android:paddingRight="25dp"
+                android:paddingLeft="25dp"
+                android:layout_below="@+id/textView6"
+                android:layout_alignRight="@+id/textView6"
+                android:layout_alignEnd="@+id/textView6"
+                android:paddingTop="25dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/time_event"
+                android:textAlignment="textEnd"
+                android:gravity="center"
+                android:paddingRight="25dp"
+                android:id="@+id/textView6"
+                android:layout_alignBottom="@+id/textView3"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignTop="@+id/textView3" />
+
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:text="@string/event_holder_room"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:id="@+id/single_event_room"
         android:gravity="center"
         android:textColor="#ffffff"
         android:background="#536dfe"
         android:layout_alignParentBottom="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/time_event"
-        android:textAlignment="textEnd"
-        android:gravity="center"
-        android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/textView5"
-        android:layout_alignEnd="@+id/textView5"
-        android:layout_above="@+id/textView5"
-        android:layout_toRightOf="@+id/textView3"
-        android:layout_toEndOf="@+id/textView3"
-        android:paddingRight="16dp"
-        android:id="@+id/textView6" />
 
 
 
