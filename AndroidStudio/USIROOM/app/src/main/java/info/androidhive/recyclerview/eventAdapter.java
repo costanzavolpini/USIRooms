@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.usirooms.usirooms.R;
+import com.usirooms.usirooms.singleEvent;
 import com.usirooms.usirooms.singleRoom;
 
 import java.util.List;
@@ -30,7 +31,7 @@ public class eventAdapter extends RecyclerView.Adapter<eventAdapter.MyViewHolder
             view.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view1){
-                    view.getContext().startActivity(new Intent(view.getContext(),singleRoom.class));
+                    view.getContext().startActivity(new Intent(view.getContext(),singleEvent.class));
                 }
             });
         }

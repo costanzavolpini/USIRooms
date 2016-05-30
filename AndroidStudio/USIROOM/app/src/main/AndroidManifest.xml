@@ -22,7 +22,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".singleRoom"></activity>
+        <activity android:name=".singleRoom" />
+        <activity android:name=".singleEvent"></activity>
     </application>
 
 </manifest>
