@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.CalendarView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,30 +45,40 @@ public class byDate extends Fragment {
 
         View rootView = inflater.inflate(R.layout.by_date, container, false);
 
+
+
         cv = (CalendarView) rootView.findViewById(R.id.calendarView);
         date = cv.getDate();
-        cv.setOnClickListener(new View.OnClickListener() {
+
+        cv.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener(){
             @Override
-            public void onClick(View v) {
-                Log.i("Info", "Clicked event");
-                Calendar calendar = Calendar.getInstance();
-                calendar.setTimeInMillis(date);
-                Log.i("Info", "Clicked event");
-                prepareEventData();
+            public void onGlobalLayout()
+            {
+                cv.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Log.i("Info", "Clicked event");
+                        Calendar calendar = Calendar.getInstance();
+                        calendar.setTimeInMillis(date);
+                        Log.i("Info", "Clicked event");
+                        prepareEventData();
+                    }
+                });
+
+                cv.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+                    @Override
+                    public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
+                        if (cv.getDate() != date){
+                            Log.i("Info", "Clicked event");
+                            date = cv.getDate();
+                            prepareEventData();
+
+                        }
+                    }
+                });
             }
         });
 
-//        cv.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-//            @Override
-//            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-//                if (cv.getDate() != date){
-//                    Log.i("Info", "Clicked event");
-//                    date = cv.getDate();
-//                    prepareEventData();
-//
-//                }
-//            }
-//        });
 
         // 1. get a reference to recyclerView
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view_calendar);
