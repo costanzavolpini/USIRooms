@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="accent_material_light">#009688</color>
+    <color name="red_accent">#ff3d3d</color>
+    <color name="red_primary">#c62828</color>
+</resources>
