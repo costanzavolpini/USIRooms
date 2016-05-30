@@ -58,5 +58,6 @@
         <item>Room A33</item>
         <item>Room A34</item>
     </string-array>
+    <string name="title_activity_event_white">EventWhite</string>
 
 </resources>
