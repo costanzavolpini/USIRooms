@@ -20,4 +20,8 @@ public class singleRoom extends AppCompatActivity {
         onBackPressed();
         return true;
     }
+
+//    metodo che ritorna la mappa corrispondente
+
+
 }

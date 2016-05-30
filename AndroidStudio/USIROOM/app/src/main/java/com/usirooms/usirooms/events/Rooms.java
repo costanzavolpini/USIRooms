@@ -81,7 +81,7 @@ public class Rooms {
 
         dr.setId(1487);
         dr.setName("SI-003");
-        dr.setImg("A101.img");
+        dr.setImg("si013.png");
         dr.setSize(60);
         dr.setHasProjector(true);
         dr.setHowToReach("By feet");
