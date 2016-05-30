@@ -18,6 +18,7 @@
         card_view:cardCornerRadius="4dp"
         card_view:cardElevation="14dp"
         card_view:cardBackgroundColor="#E6E6E6"
+        android:foreground="?android:attr/selectableItemBackground"
         >
 
     <RelativeLayout

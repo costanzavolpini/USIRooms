@@ -15,11 +15,12 @@
         android:id="@+id/textView3"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:gravity="center"/>
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="211dp"
+            android:layout_height="wrap_content"
             android:text="@string/event_description"
             android:textSize="12sp"
             android:layout_gravity="center"
