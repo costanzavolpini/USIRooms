@@ -1,8 +1,6 @@
 package com.usirooms.usirooms;
 
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -107,7 +105,6 @@ public class MainActivity extends AppCompatActivity
         });
 
     }
-
 
     public void credits(View v){
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
