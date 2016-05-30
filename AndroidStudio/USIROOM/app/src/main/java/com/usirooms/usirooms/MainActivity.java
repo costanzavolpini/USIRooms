@@ -81,11 +81,11 @@ public class MainActivity extends AppCompatActivity
         spinnerManager(favouriteBuilding, spinnerView);
 
         if (favouriteBuilding.equals("Black Building")){
-            spinnerView.setBackgroundResource(R.mipmap.blackbuilding1);
+            spinnerView.setBackgroundResource(R.mipmap.blackbuilding2);
         } else if (favouriteBuilding.equals("Red Building")){
             spinnerView.setBackgroundResource(R.mipmap.redbuilding2);
         } else {
-            spinnerView.setBackgroundResource(R.mipmap.mainbuilding);
+            spinnerView.setBackgroundResource(R.mipmap.mainbuilding4b);
         }
 
     }
