@@ -29,23 +29,34 @@
         <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
-    <style name="RedTheme" parent="Theme.AppCompat.Light.NoActionBar" >
+    <style name="RedTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/red_dark</item>
         <item name="colorPrimaryDark">@color/holo_red_dark</item>
 
         <item name="colorAccent">@color/accent_material_light</item>
     </style>
 
-    <style name="BlackTheme" parent="Theme.AppCompat.Light.NoActionBar" >
+    <style name="BlackTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/primary_material_dark</item>
         <item name="colorPrimaryDark">@android:color/background_dark</item>
         <item name="colorAccent">@color/accent_material_light</item>
     </style>
 
-    <style name="OrangeTheme" parent="Theme.AppCompat.Light.NoActionBar" >
+    <style name="OrangeTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
 
+    </style>
+
+    <style name="WhiteTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimaryDark">@android:color/transparent</item>
+        <item name="colorPrimary">@android:color/transparent</item>
+        <item name="android:textColorSecondary">@android:color/transparent</item>
+        <item name="android:textColorPrimary">@android:color/transparent</item>
+        <item name="android:textColorPrimaryInverse">@android:color/transparent</item>
+        <item name="android:colorBackground">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/background_light</item>
+        <item name="android:colorForeground">@android:color/transparent</item>
     </style>
 
 </resources>
