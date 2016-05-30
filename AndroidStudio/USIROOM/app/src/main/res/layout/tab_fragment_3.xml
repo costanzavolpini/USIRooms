@@ -2,14 +2,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:minHeight="?attr/actionBarSize"
+    android:layout_below="@id/toolbar"
     android:orientation="vertical"
     android:background="#ffffff">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view_tab_3"
-        android:paddingTop="0dp"
-        android:paddingLeft="0dp"
-        android:paddingRight="0dp"
+        android:paddingTop="105dp"
+        android:minHeight="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />
