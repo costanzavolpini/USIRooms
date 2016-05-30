@@ -61,6 +61,13 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (favouriteBuilding.equals("Black Building")){
+            toolbar.setTitle("Black Building");
+        } else if (favouriteBuilding.equals("Red Building")){
+            toolbar.setTitle("Red Building");
+        } else {
+            toolbar.setTitle("Main Building");
+        }
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
