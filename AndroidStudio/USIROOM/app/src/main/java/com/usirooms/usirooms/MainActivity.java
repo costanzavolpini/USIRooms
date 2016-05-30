@@ -84,14 +84,14 @@ public class MainActivity extends AppCompatActivity
 
                 Log.i("Info", "Position: " + position + " Theme: " + favouriteBuilding);
 
-                if (position == 0 && !favouriteBuilding.equals("Main Building") && favouriteBuilding != null) {
+                if (favouriteBuilding != null && position == 0 && !favouriteBuilding.equals("Main Building")) {
                     CacheManager.writeAllCachedText(getApplicationContext(), "preferences.txt", "Main Building");
                     recreate();
-                } else if (position == 1 && !favouriteBuilding.equals("Black Building")){
+                } else if (favouriteBuilding != null && position == 1 && !favouriteBuilding.equals("Black Building")){
                     CacheManager.writeAllCachedText(getApplicationContext(), "preferences.txt", "Black Building");
 
                     recreate();
-                } else if (position == 2 && !favouriteBuilding.equals("Red Building")){
+                } else if (favouriteBuilding != null && position == 2 && !favouriteBuilding.equals("Red Building")){
                     CacheManager.writeAllCachedText(getApplicationContext(), "preferences.txt", "Red Building");
                     recreate();
                 }
