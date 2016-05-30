@@ -5,12 +5,13 @@
     android:orientation="vertical"
     android:background="#ffffff">
 
-    <ListView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view_tab_2"
+        android:paddingTop="0dp"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@android:id/list"
-        android:clickable="true"
-        android:contextClickable="true">
-    </ListView>
+        />
 
 </RelativeLayout>
