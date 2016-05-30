@@ -5,12 +5,24 @@ package info.androidhive.recyclerview;
  */
 public class roomData {
     private String roomNumber;
+    private String roomTimeStart;
+    private String roomTimeEnd;
 
-    public roomData(String roomNumber){
+    public roomData(String roomNumber, String roomTimeStart, String roomTimeEnd){
         this.roomNumber = roomNumber;
+        this.roomTimeStart = roomTimeStart;
+        this.roomTimeEnd = roomTimeEnd;
     }
 
     public String getRoomNumber(){
         return roomNumber;
+    }
+
+    public String getRoomTimeStart(){
+        return roomTimeStart;
+    }
+
+    public String getRoomTimeEnd(){
+        return roomTimeEnd;
     }
 }

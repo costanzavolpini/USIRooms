@@ -78,7 +78,7 @@ public class FreeRooms extends Fragment {
      private void prepareRoomData() {
 
          for (dummyRoom dr : MainActivity.rooms.getRooms()){
-             roomList.add(new roomData("Room" + dr.getName()));
+             roomList.add(new roomData("Room " + dr.getName(), "From 8:30", "to 10:30"));
          }
 
     }

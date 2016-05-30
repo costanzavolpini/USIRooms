@@ -22,11 +22,15 @@ public class roomAdapter extends RecyclerView.Adapter<roomAdapter.MyViewHolder> 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public CardView cardView;
         public TextView roomNumber;
+        public TextView roomTimeStart;
+        public TextView roomTimeEnd;
 
         public MyViewHolder(final View view) {
             super(view);
             cardView = (CardView) view.findViewById(R.id.card_view);
             roomNumber = (TextView) view.findViewById(R.id.room_number);
+            roomTimeStart = (TextView) view.findViewById(R.id.room_time_start);
+            roomTimeEnd = (TextView) view.findViewById(R.id.room_time_end);
             view.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view1){
@@ -54,6 +58,8 @@ public class roomAdapter extends RecyclerView.Adapter<roomAdapter.MyViewHolder> 
     public void onBindViewHolder(roomAdapter.MyViewHolder holder, int position) {
         roomData room = roomList.get(position);
         holder.roomNumber.setText(room.getRoomNumber());
+        holder.roomTimeStart.setText(room.getRoomTimeStart());
+        holder.roomTimeEnd.setText(room.getRoomTimeEnd());
     }
 
     @Override
