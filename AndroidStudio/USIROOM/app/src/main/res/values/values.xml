@@ -3,4 +3,5 @@
     <color name="accent_material_light">#009688</color>
     <color name="red_accent">#ff3d3d</color>
     <color name="red_primary">#c62828</color>
+    <color name="theme_status_blu">#536dfe</color>
 </resources>
