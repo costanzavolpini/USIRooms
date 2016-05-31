@@ -59,5 +59,23 @@
         <item>Room A34</item>
     </string-array>
     <string name="title_activity_event_white">EventWhite</string>
+    <string name="title_activity_on_boarding">OnBoarding</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    
+    
+    <!--On-Boarding-->
+    <string name="name_app">USIRooms</string>
+    <string name="subtitle">Control of rooms in one tap</string>
+    <string name="free_rooms">Free Rooms</string>
+    <string name="free_rooms_sub">Easily find rooms available for studying</string>
+    <string name="by_event">By Event</string>
+    <string name="by_event_sub">Check all events and all courses</string>
+    <string name="by_room">By Room</string>
+    <string name="by_room_sub">List of all USI rooms </string>
+    <string name="nav_explain">Navigation View</string>
+    <string name="nav_explain_sub">Select your favourite building</string>
+
+
 
 </resources>

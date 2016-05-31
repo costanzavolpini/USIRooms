@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="accent_material_light">#009688</color>
+    <color name="accent_material_light">#028155</color>
     <color name="red_accent">#ff3d3d</color>
     <color name="red_primary">#c62828</color>
     <color name="theme_status_blu">#536dfe</color>
+    <color name="onBoardRed">#d53e33</color>
+    <color name="VioletOnBoard">#9575cd</color>
+    <color name="VioletOnBoardDark">#846eab</color>
+    <color name="primary_dark_material_light">#adadad</color>
 </resources>

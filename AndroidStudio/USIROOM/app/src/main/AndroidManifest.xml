@@ -25,13 +25,17 @@
         </activity>
         <activity
             android:name=".singleRoom"
-            android:configChanges="orientation|screenSize|layoutDirection"></activity>
+            android:configChanges="orientation|screenSize|layoutDirection" />
         <activity
             android:name=".singleEvent"
-            android:configChanges="orientation|screenSize|layoutDirection"></activity>
+            android:configChanges="orientation|screenSize|layoutDirection" />
         <activity
             android:name=".EventWhite"
             android:label="@string/title_activity_event_white"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".OnBoarding"
+            android:label="@string/title_activity_on_boarding"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

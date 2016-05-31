@@ -60,4 +60,24 @@
         <item name="android:textColorSecondaryInverse">@android:color/transparent</item>
     </style>
 
+    <style name="OnBoard" parent="Theme.AppCompat.Light.NoActionBar" >
+        <item name="colorPrimary">@color/theme_status_blu</item>
+    </style>
+
+    <style name="onBoardGreen" parent="Theme.AppCompat.Light.NoActionBar" >
+        <item name="colorPrimary">@color/on_board_green</item>
+    </style>
+
+    <style name="OnBoardRed" parent="Theme.AppCompat.Light.NoActionBar" >
+        <item name="colorPrimary">@color/onBoardRed</item>
+    </style>
+
+    <style name="OnBoardYellow" parent="Theme.AppCompat.Light.NoActionBar" >
+        <item name="colorPrimary">@color/OnBoardYellow</item>
+    </style>
+
+    <style name="VioletOnBoard" parent="Theme.AppCompat.Light.NoActionBar" >
+        <item name="colorPrimary">@color/VioletOnBoard</item>
+    </style>
+
 </resources>
