@@ -20,9 +20,9 @@ public class Events {
         events = new ArrayList<dummyEvent>();
 
         try {
-            events.addAll(is.analyze("bachelor_inf_3_year.json"));
+            events.addAll(is.analyze("si008.json"));
 
-
+            Log.i("INFO", String.valueOf(events.size()));
 
             Collections.sort(events, new DateTimeComparator());
 

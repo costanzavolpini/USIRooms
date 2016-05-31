@@ -48,7 +48,8 @@ while(date < dateTo):
     totalEvent += 1
 
 
-
+    if totalEvent > 1:
+        print(",", end="")
 
 
     print("{", end="")
@@ -62,8 +63,9 @@ while(date < dateTo):
     print("\"semester_academic_year\": \"SP 2016\",\"links\": {\"self\": \"http://search.usi.ch/api/course/35253499\"},\"lecturers\": {\"data\": [{\"person\": {\"id\": \"414fbe48da94f28c810b0e4f1890647f\",\"first_name\": \"Mehdi\",\"last_name\": \"Jazayeri\",", end="")
     print("\"short_name\": \""+short_name+"\",", end="")
     print("\"emails\": [\""+emailOrganizer+"\"],", end="")
-    print("\"links\": {\"self\": \"http://search.usi.ch/api/people/414fbe48da94f28c810b0e4f1890647f\",\"courses\": \"http://search.usi.ch/api/people/414fbe48da94f28c810b0e4f1890647f/courses\",\"publications\": \"http://search.usi.ch/api/people/414fbe48da94f28c810b0e4f1890647f/publications\",\"projects\": \"http://search.usi.ch/api/people/414fbe48da94f28c810b0e4f1890647f/projects\",\"schedules\": \"http://search.usi.ch/api/people/414fbe48da94f28c810b0e4f1890647f/schedules\"},\"phones\": {\"data\": [{\"internal\": \"4656\",\"official\": \"+41 58 666 4656\"}],\"meta\": {\"count\": 1}}},\"role\": {\"name_it_m\": \"Docente titolare del corso\",\"name_it_f\": \"Docente titolare del corso\",\"name_en_m\": \"Course director\",\"name_en_f\": \"Course director\"}},],\"meta\": {\"count\": 2}}},", end="")
-    print("\"place\": {\"id\": 1487,\"office\": \""+classSelected+"\",\"floor\": \"0\",\"links\": {\"self\": \"http://search.usi.ch/api/place/1487\",\"schedules\": \"http://search.usi.ch/api/place/1487/schedules\"},\"building\": {\"name_it\": \""+building+"\",\"name_en\": \""+building+"\",\"address\": \"Via Buffi 13, 6904 Lugano\",\"venue\": \"Campus Lugano\"}}},", end="")
+    print("\"links\": {\"self\": \"http://search.usi.ch/api/people/414fbe48da94f28c810b0e4f1890647f\",\"courses\": \"http://search.usi.ch/api/people/414fbe48da94f28c810b0e4f1890647f/courses\",\"publications\": \"http://search.usi.ch/api/people/414fbe48da94f28c810b0e4f1890647f/publications\",\"projects\": \"http://search.usi.ch/api/people/414fbe48da94f28c810b0e4f1890647f/projects\",\"schedules\": \"http://search.usi.ch/api/people/414fbe48da94f28c810b0e4f1890647f/schedules\"},\"phones\": {\"data\": [{\"internal\": \"4656\",\"official\": \"+41 58 666 4656\"}],\"meta\": {\"count\": 1}}},\"role\": {\"name_it_m\": \"Docente titolare del corso\",\"name_it_f\": \"Docente titolare del corso\",\"name_en_m\": \"Course director\",\"name_en_f\": \"Course director\"}}],\"meta\": {\"count\": 2}}},", end="")
+    print("\"place\": {\"id\": 1487,\"office\": \""+classSelected+"\",\"floor\": \"0\",\"links\": {\"self\": \"http://search.usi.ch/api/place/1487\",\"schedules\": \"http://search.usi.ch/api/place/1487/schedules\"},\"building\": {\"name_it\": \""+building+"\",\"name_en\": \""+building+"\",\"address\": \"Via Buffi 13, 6904 Lugano\",\"venue\": \"Campus Lugano\"}}}", end="")
     print()
+
 
 print("],\"meta\": {\"count\": " + str(totalEvent) + "}}", end="")
