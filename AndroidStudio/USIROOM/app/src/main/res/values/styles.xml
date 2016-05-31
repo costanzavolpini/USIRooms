@@ -80,4 +80,11 @@
         <item name="colorPrimary">@color/VioletOnBoard</item>
     </style>
 
+
+    <style name="SingleRoomTheme" parent="Theme.AppCompat.Light.NoActionBar" >
+        <item name="colorPrimary">@android:color/transparent</item>
+        <item name="colorPrimaryDark">@color/theme_status_bludark</item>
+        <item name="android:colorBackground">@color/theme_status_blu</item>
+    </style>
+
 </resources>

@@ -62,9 +62,4 @@
         android:background="#536dfe"
         android:layout_alignParentBottom="true" />
 
-
-
-
-
-
 </RelativeLayout>

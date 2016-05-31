@@ -8,4 +8,5 @@
     <color name="VioletOnBoard">#9575cd</color>
     <color name="VioletOnBoardDark">#846eab</color>
     <color name="primary_dark_material_light">#adadad</color>
+    <color name="theme_status_bludark">#2c48e5</color>
 </resources>
