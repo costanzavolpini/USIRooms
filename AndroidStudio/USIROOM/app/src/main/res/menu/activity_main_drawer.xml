@@ -15,7 +15,10 @@
             android:id="@+id/nav_room"
             android:icon="@drawable/ic_by_room"
             android:title="By Room" />
-
+        <item
+            android:id="@+id/help"
+            android:icon="@drawable/ic_help"
+            android:title="Help" />
     </group>
 
 </menu>

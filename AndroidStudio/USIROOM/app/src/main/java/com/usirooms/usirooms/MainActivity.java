@@ -43,11 +43,14 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
+
         if (prefs.getBoolean("previouslyStarted", false) == false){
             SharedPreferences.Editor edit = prefs.edit();
             edit.putBoolean("previouslyStarted", Boolean.TRUE);
             edit.putString("favouriteBuilding", "Main Building");
             edit.apply();
+
+            startActivity(new Intent(this, OnBoarding.class));
 
             Log.i("Info", "First active");
         }
@@ -99,7 +102,7 @@ public class MainActivity extends AppCompatActivity
         } else if (favouriteBuilding.equals("Red Building")){
             spinnerView.setBackgroundResource(R.mipmap.redbuilding2);
         } else {
-            spinnerView.setBackgroundResource(R.mipmap.mainbuilding4b);
+            spinnerView.setBackgroundResource(R.mipmap.mainbuilding);
         }
 
     }
@@ -136,6 +139,8 @@ public class MainActivity extends AppCompatActivity
             fragment = new byDate();
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.relativeLayout, fragment).commit();
+        }else if (id == R.id.help) {
+            startActivity(new Intent(this, OnBoarding.class));
         }
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
