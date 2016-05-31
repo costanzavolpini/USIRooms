@@ -2,9 +2,11 @@ package com.usirooms.usirooms;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -35,16 +37,22 @@ public class MainActivity extends AppCompatActivity
 
     public static Rooms rooms = new Rooms();
     public static Events events = new Events();
+    private SharedPreferences prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
-        if (CacheManager.readAllCachedText(this, "preferences.txt") == null){
-            CacheManager.writeAllCachedText(this, "preferences.txt", "Main Building#N");
-            Log.i("Cache", "NULL CACHE");
+        if (prefs.getBoolean("previouslyStarted", false) == false){
+            SharedPreferences.Editor edit = prefs.edit();
+            edit.putBoolean("previouslyStarted", Boolean.TRUE);
+            edit.putString("favouriteBuilding", "Main Building");
+            edit.apply();
+
+            Log.i("Info", "First active");
         }
 
-        final String favouriteBuilding = CacheManager.readAllCachedText(this, "preferences.txt").split("#")[0];
+        final String favouriteBuilding = prefs.getString("favouriteBuilding", "Main Building");;
 
         Log.i("Theme", "Theme selected: " + favouriteBuilding);
 
@@ -142,12 +150,14 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
 
-        if (CacheManager.readAllCachedText(this, "preferences.txt").split("#")[1].equals("Y")){
+        if (prefs.getBoolean("OpenDrawer", false)){
             Log.i("Theme", "Showing opened drawer");
 
-            CacheManager.writeAllCachedText(getApplicationContext(), "preferences.txt", CacheManager.readAllCachedText(this, "preferences.txt").split("#")[0] + "#N");
-            drawer.openDrawer(GravityCompat.START);
+            SharedPreferences.Editor edit = prefs.edit();
+            edit.putBoolean("OpenDrawer", Boolean.FALSE);
+            edit.apply();
 
+            drawer.openDrawer(GravityCompat.START);
         }else {
             drawer.closeDrawer(GravityCompat.START);
         }
@@ -173,22 +183,37 @@ public class MainActivity extends AppCompatActivity
 
                 Log.i("Theme", "Position: " + position + " Theme: " + favouriteBuilding);
 
+
+                SharedPreferences.Editor edit = prefs.edit();
+
                 if (position == 0 && !favouriteBuilding.equals("Main Building")){
-                    CacheManager.writeAllCachedText(getApplicationContext(), "preferences.txt", "Main Building#Y");
+
+                    edit.putString("favouriteBuilding", "Main Building");
+                    edit.putBoolean("OpenDrawer", Boolean.TRUE);
+                    edit.apply();
+
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                     overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
 
                     finish();
                 } else if (position == 1 && !favouriteBuilding.equals("Black Building")){
-                    CacheManager.writeAllCachedText(getApplicationContext(), "preferences.txt", "Black Building#Y");
+
+                    edit.putString("favouriteBuilding", "Black Building");
+                    edit.putBoolean("OpenDrawer", Boolean.TRUE);
+                    edit.apply();
+
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                     overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
 
                     finish();
                 } else if (position == 2 && !favouriteBuilding.equals("Red Building")){
-                    CacheManager.writeAllCachedText(getApplicationContext(), "preferences.txt", "Red Building#Y");
+
+                    edit.putString("favouriteBuilding", "Red Building");
+                    edit.putBoolean("OpenDrawer", Boolean.TRUE);
+                    edit.apply();
+
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                     overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
