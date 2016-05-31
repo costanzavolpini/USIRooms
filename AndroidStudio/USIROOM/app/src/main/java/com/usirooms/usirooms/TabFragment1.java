@@ -22,7 +22,6 @@ import info.androidhive.recyclerview.roomAdapter;
 import info.androidhive.recyclerview.roomData;
 
 public class TabFragment1 extends Fragment {
-
     private List<roomData> roomList = new ArrayList<>();
     private RecyclerView recyclerView;
     private LinearLayoutManager mLinearLayoutManager;
@@ -36,7 +35,6 @@ public class TabFragment1 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.tab_fragment_1, container, false);
-
 
         // 1.
         rAdapter = new roomAdapter(roomList);
@@ -70,8 +68,14 @@ public class TabFragment1 extends Fragment {
 //        MainActivity.rooms.getRoomBuilding("Balck Building");
 
         }
-            return rootView;
+        return rootView;
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        roomList = new ArrayList<>();
     }
 
 }

@@ -20,9 +20,9 @@ public class Events {
         events = new ArrayList<dummyEvent>();
 
         try {
-            events.addAll(is.analyze("bachelor_inf_3_year.json"));
+            events.addAll(is.analyze("si008.json"));
 
-
+            Log.i("INFO", String.valueOf(events.size()));
 
             Collections.sort(events, new DateTimeComparator());
 
@@ -64,9 +64,56 @@ public class Events {
             freeRooms.add(new dummyFreeRooms(dm));
         }
 
+        int position = binarySearch(events, 0, events.size() -1, start);
 
-        for(dummyEvent event : events){
+        Boolean follow = Boolean.TRUE;
+        while(follow && position < events.size()){
+            dummyEvent event = events.get(position);
+            if(event.getStart() < start && event.getEnd() < end && event.getEnd() > start){
+                //    |-----|
+                //  |---|
 
+                for (int i = 0; i < freeRooms.size(); i++){
+                    dummyFreeRooms room = freeRooms.get(i);
+                    if (room.getRoom().getName().equals(event.getNameRoom())){
+                        room.setStart(event.getEnd());
+                        i = freeRooms.size();
+                    }
+                }
+            }else if(event.getStart() > start && event.getStart() < end){
+                // |---------|
+                //    |----------|
+                //    |---|
+                for (int i = 0; i < freeRooms.size(); i++){
+                    dummyFreeRooms room = freeRooms.get(i);
+                    if (room.getRoom().getName().equals(event.getNameRoom())){
+                        if (room.getStart() != -1000 && (event.getStart() - room.getStart() < 960)){
+                            room.setStart(event.getEnd());
+                        }else {
+                            room.setEnd(event.getStart());
+                        }
+                        i = freeRooms.size();
+                    }
+                }
+            }else if(event.getStart() < start && event.getEnd() > end){
+                for (int i = 0; i < freeRooms.size(); i++){
+                    dummyFreeRooms room = freeRooms.get(i);
+                    if (room.getRoom().getName().equals(event.getNameRoom())){
+                        room.setStart(event.getEnd());
+                        i = freeRooms.size();
+                    }
+                }
+            }else if(event.getStart() > end){
+                for (int i = 0; i < freeRooms.size(); i++){
+                    dummyFreeRooms room = freeRooms.get(i);
+                    if (room.getRoom().getName().equals(event.getNameRoom())){
+                        if (room.getStart() != -1000){
+                            room.setEnd(event.getStart());
+                        }
+                        i = freeRooms.size();
+                    }
+                }
+            }
         }
 
 
@@ -74,7 +121,7 @@ public class Events {
     }
 
 
-    public static Integer binarySearch(ArrayList<dummyEvent> array, int lowerbound, int upperbound, int start) {
+    public static Integer binarySearch(ArrayList<dummyEvent> array, int lowerbound, int upperbound, long start) {
         int position;
 
         // To start, find the subscript of the middle position.
