@@ -71,4 +71,10 @@ public class TabFragment2 extends Fragment {
         return rootView;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        roomList = new ArrayList<>();
+    }
+
 }
