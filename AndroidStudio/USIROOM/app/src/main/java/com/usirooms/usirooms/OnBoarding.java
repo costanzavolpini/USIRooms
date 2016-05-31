@@ -74,7 +74,7 @@ public class OnBoarding extends OnboarderActivity {
 
         // Each page is added to an ArrayList of pages.
         onboarderPages.add(onboarderPage1);
-        onboarderPages.add(onboarderPage5 );
+       // onboarderPages.add(onboarderPage5 );
         onboarderPages.add(onboarderPage2);
         onboarderPages.add(onboarderPage3);
         onboarderPages.add(onboarderPage4);
