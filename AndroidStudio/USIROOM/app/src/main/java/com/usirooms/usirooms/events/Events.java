@@ -39,11 +39,14 @@ public class Events {
         return events;
     }
 
-    public ArrayList<dummyEvent> getEvents (long date, String building){
+    public ArrayList<dummyEvent> getEvents (long start, long end, String building){
+        // return a list of events between start and end
         ArrayList<dummyEvent> upcomingEvents = new ArrayList<dummyEvent>();
         for (dummyEvent event : events) {
             if (building.equals(MainActivity.rooms.getRoom(event.getIdRoom()).getBuilding())){
-                if (date < event.getEnd() && event.getEnd() < date + 86400000){
+                if ((start < event.getEnd() && event.getEnd() < end) ||
+                        (start < event.getStart() && event.getStart() < end) ||
+                        (start > event.getStart() && end < event.getEnd())){
                     upcomingEvents.add(event);
                 }
             }
@@ -52,17 +55,45 @@ public class Events {
     }
 
 
-    public ArrayList<dummyRoom> getFreeRoom (long date, String building){
-        Rooms rooms = MainActivity.rooms;
-        ArrayList<dummyRoom> freeRooms = new ArrayList<>();
+    public ArrayList<dummyRoom> getFreeRoom (long start, long end, String building){
 
-        for (dummyEvent event : events){
-            if (event.getEnd() > date + 1800){
+        ArrayList<dummyFreeRooms> freeRooms = new ArrayList<>();
 
-            }
+        for(dummyRoom dm : MainActivity.rooms.getRoomBuilding(building)){
+            // generating dummyFreeRooms
+            freeRooms.add(new dummyFreeRooms(dm));
+        }
+
+
+        for(dummyEvent event : events){
+
         }
 
 
         return null;
     }
+
+
+    public static Integer binarySearch(ArrayList<dummyEvent> array, int lowerbound, int upperbound, int start) {
+        int position;
+
+        // To start, find the subscript of the middle position.
+        position = (lowerbound + upperbound) / 2;
+
+        while(((array.get(position).getStart() > start) || (array.get(position).getStart() < start - 36000)) && (lowerbound <= upperbound)) {
+            if (array.get(position).getStart() > start) {            // If the number is > key, ..
+                upperbound = position - 1;
+            } else {
+                lowerbound = position + 1;    // Else, increase position by one.
+            }
+            position = (lowerbound + upperbound) / 2;
+        }
+        if (lowerbound <= upperbound) {
+            return position;
+        } else {
+            return null;
+        }
+    }
+
 }
+

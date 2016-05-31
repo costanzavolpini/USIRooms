@@ -65,13 +65,14 @@ public class Rooms {
         return null;
     }
 
-    public dummyRoom getRoomBuilding(String building){
+    public ArrayList<dummyRoom> getRoomBuilding(String building){
+        ArrayList<dummyRoom> dm = new ArrayList<>();
         for (dummyRoom room : rooms){
             if (room.getBuilding().equals(building)){
-                return room;
+                dm.add(room);
             }
         }
-        return null;
+        return dm;
     }
 
 /////////////////INF-ROOMS/////////////////
