@@ -5,8 +5,8 @@ package com.usirooms.usirooms.events;
  */
 public class dummyFreeRooms {
     private final dummyRoom roomName;
-    private long eventStart;
-    private long eventEnd;
+    private long eventStart = -1000;
+    private long eventEnd = -1000;
 
 
     public dummyFreeRooms(dummyRoom roomName){
