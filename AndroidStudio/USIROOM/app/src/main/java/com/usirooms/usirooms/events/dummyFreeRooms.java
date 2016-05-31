@@ -4,12 +4,12 @@ package com.usirooms.usirooms.events;
  * Created by Marco on 5/29/16.
  */
 public class dummyFreeRooms {
-    private dummyRoom roomName;
+    private final dummyRoom roomName;
     private long eventStart;
     private long eventEnd;
 
 
-    public void setRoom(dummyRoom rooms){
+    public dummyFreeRooms(dummyRoom roomName){
         this.roomName = roomName;
     }
 
