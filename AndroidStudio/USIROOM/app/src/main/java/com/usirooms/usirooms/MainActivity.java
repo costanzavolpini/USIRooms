@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        startActivity(new Intent(this, OnBoarding.class));
 
         if (prefs.getBoolean("previouslyStarted", false) == false){
             SharedPreferences.Editor edit = prefs.edit();
