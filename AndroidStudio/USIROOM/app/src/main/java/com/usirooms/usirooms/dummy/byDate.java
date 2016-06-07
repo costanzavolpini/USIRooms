@@ -37,9 +37,6 @@ public class byDate extends Fragment {
     private RecyclerView recyclerView;
     private LinearLayoutManager mLinearLayoutManager;
     private eventAdapter eAdapter;
-   // Button dataEvento = (Button) findViewById(R.id.selectDay);
-
-    // Method that return the layout corresponding to that class
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -57,17 +54,14 @@ public class byDate extends Fragment {
             public void onGlobalLayout() {
                 if (cv.getDate() != date) {
                     date = cv.getDate();
-                    Log.i("Info", "Ti supplico vaiiiiiii");
                     prepareEventData();
                 }
 
                 cv.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Log.i("Info", "Clicked event");
                         Calendar calendar = Calendar.getInstance();
                         calendar.setTimeInMillis(date);
-                        Log.i("Info", "Clicked event");
                         prepareEventData();
                     }
                 });
@@ -88,7 +82,6 @@ public class byDate extends Fragment {
         });
 
 
-        // 1. get a reference to recyclerView
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view_calendar);
 
         prepareEventData();
@@ -98,11 +91,8 @@ public class byDate extends Fragment {
 
     public static int randInt(int min, int max) {
 
-        // Usually this can be a field rather than a method variable
         Random rand = new Random();
 
-        // nextInt is normally exclusive of the top value,
-        // so add 1 to make it inclusive
         int randomNum = rand.nextInt((max - min) + 1) + min;
 
         return randomNum;
@@ -111,22 +101,17 @@ public class byDate extends Fragment {
 
     public void prepareEventData(){
 
-        // 2. set layoutManger
         mLinearLayoutManager = new LinearLayoutManager(getActivity());
         mLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerView.setHasFixedSize(true); //
+        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(mLinearLayoutManager);
 
 
-        // 3. create an adapter
         eAdapter = new eventAdapter(eventList);
-        // 4. set adapter
 
         recyclerView.setAdapter(eAdapter);
-        // 5. set item animator to DefaultAnimator
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        Log.i("Info", "Cleaning events");
 
         eventList.clear();
 

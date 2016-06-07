@@ -40,7 +40,6 @@ public class Events {
     }
 
     public ArrayList<dummyEvent> getEvents (long start, long end, String building){
-        // return a list of events between start and end
         ArrayList<dummyEvent> upcomingEvents = new ArrayList<dummyEvent>();
         for (dummyEvent event : events) {
             if (building.equals(MainActivity.rooms.getRoom(event.getIdRoom()).getBuilding())){
@@ -60,7 +59,6 @@ public class Events {
         ArrayList<dummyFreeRooms> freeRooms = new ArrayList<>();
 
         for(dummyRoom dm : MainActivity.rooms.getRoomBuilding(building)){
-            // generating dummyFreeRooms
             freeRooms.add(new dummyFreeRooms(dm));
         }
 
@@ -70,8 +68,6 @@ public class Events {
         while(follow && position < events.size()){
             dummyEvent event = events.get(position);
             if(event.getStart() < start && event.getEnd() < end && event.getEnd() > start){
-                //    |-----|
-                //  |---|
 
                 for (int i = 0; i < freeRooms.size(); i++){
                     dummyFreeRooms room = freeRooms.get(i);
@@ -81,9 +77,6 @@ public class Events {
                     }
                 }
             }else if(event.getStart() > start && event.getStart() < end){
-                // |---------|
-                //    |----------|
-                //    |---|
                 for (int i = 0; i < freeRooms.size(); i++){
                     dummyFreeRooms room = freeRooms.get(i);
                     if (room.getRoom().getName().equals(event.getNameRoom())){
@@ -124,14 +117,13 @@ public class Events {
     public static Integer binarySearch(ArrayList<dummyEvent> array, int lowerbound, int upperbound, long start) {
         int position;
 
-        // To start, find the subscript of the middle position.
         position = (lowerbound + upperbound) / 2;
 
         while(((array.get(position).getStart() > start) || (array.get(position).getStart() < start - 36000)) && (lowerbound <= upperbound)) {
-            if (array.get(position).getStart() > start) {            // If the number is > key, ..
+            if (array.get(position).getStart() > start) {
                 upperbound = position - 1;
             } else {
-                lowerbound = position + 1;    // Else, increase position by one.
+                lowerbound = position + 1;
             }
             position = (lowerbound + upperbound) / 2;
         }

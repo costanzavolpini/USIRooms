@@ -38,7 +38,6 @@ public class FreeRooms extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // 1.
         rAdapter = new roomAdapter(roomList);
     }
 
@@ -50,22 +49,16 @@ public class FreeRooms extends Fragment {
         View rootView = inflater.inflate(R.layout.free_rooms, container, false);
 
 
-        // 1. get a reference to recyclerView
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
 
-        // 2. set layoutManger
         mLinearLayoutManager = new LinearLayoutManager(getActivity());
         mLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setHasFixedSize(true); //
         recyclerView.setLayoutManager(mLinearLayoutManager);
 
 
-        // 3. create an adapter
-//        rAdapter = new roomAdapter(roomList);
-        // 4. set adapter
 
         recyclerView.setAdapter(rAdapter);
-        // 5. set item animator to DefaultAnimator
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         prepareRoomData();

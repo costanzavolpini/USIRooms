@@ -30,7 +30,5 @@ public class singleRoom extends AppCompatActivity {
         return true;
     }
 
-//    metodo che ritorna la mappa corrispondente (TO DO)
-
 
 }

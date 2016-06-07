@@ -121,7 +121,6 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
         Fragment fragment;
 
@@ -184,7 +183,6 @@ public class MainActivity extends AppCompatActivity
         spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                // your code here
 
                 Log.i("Theme", "Position: " + position + " Theme: " + favouriteBuilding);
 
@@ -231,7 +229,6 @@ public class MainActivity extends AppCompatActivity
 
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
-                // your code here
             }
 
         });
@@ -241,7 +238,6 @@ public class MainActivity extends AppCompatActivity
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
         TextView title = new TextView(this);
-        // You Can Customise your Title here
         title.setText("Credits");
         title.setPadding(0, 35, 0, -7);
         title.setGravity(Gravity.CENTER);
@@ -249,10 +245,8 @@ public class MainActivity extends AppCompatActivity
         title.setTextSize(20);
         title.setTypeface(Typeface.DEFAULT_BOLD, 1);
 
-        // set title
         alertDialogBuilder.setCustomTitle(title);
 
-        // set dialog message
         alertDialogBuilder
                 .setMessage("Costanza Volpini\nMarco Tollini" +
                         "\nMichele Lustro\nThomas Del Prete")
@@ -264,7 +258,6 @@ public class MainActivity extends AppCompatActivity
                     }
                 });
 
-        // create alert dialog
         AlertDialog dialog = alertDialogBuilder.show();
 
         TextView messageText = (TextView)dialog.findViewById(android.R.id.message);

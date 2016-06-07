@@ -6,8 +6,9 @@
 
 
     <!-- Strings related to By Event -->
-    <string name="room_event"> Room 006 </string>
-    <string name="building_event"> Black Building </string>
+    <string name="room_event"> Room SI-006 </string>
+    <string name="building_event"> Black Building \n First floor </string>
+    <string name="room_specs"> Projector: yes \nCapacity: 60 people </string>
     <string name="time_event"> 15:00-16:00 </string>
     <string name="name_event">CSS LIVE</string>
 
