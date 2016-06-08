@@ -138,6 +138,7 @@ public class MainActivity extends AppCompatActivity
             fragment = new byDate();
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.relativeLayout, fragment).commit();
+
         }else if (id == R.id.help) {
             startActivity(new Intent(this, OnBoarding.class));
         }
