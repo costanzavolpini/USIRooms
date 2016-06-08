@@ -112,20 +112,34 @@ public class byDate extends Fragment {
         recyclerView.setAdapter(eAdapter);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
+        ArrayList<eventData> ed = new ArrayList<>();
+
+        ed.add(new eventData("Algorithm and data structures"));
+        ed.add(new eventData("Calculus"));
+        ed.add(new eventData("Programming Fundamentals 2"));
+        ed.add(new eventData("Human & Computer Interaction"));
+        ed.add(new eventData("Linear Algebra"));
+        ed.add(new eventData("The new era of Robots"));
+        ed.add(new eventData("Informatics into Biology"));
+        ed.add(new eventData("The power of Dr. Racket"));
+        ed.add(new eventData("CSS: the basics"));
+        ed.add(new eventData("Anonymous: legal or not?"));
+        ed.add(new eventData("Operating Systems"));
+        ed.add(new eventData("The new era of Internet"));
+        ed.add(new eventData("Social network vs real life"));
+        ed.add(new eventData("How many friends on Facebook?"));
+        ed.add(new eventData("Informatics and women"));
+        ed.add(new eventData("Math vs computer graphics"));
+        ed.add(new eventData("Discrete structure"));
+
 
         eventList.clear();
 
-        eventData event_a = new eventData("Event " + randInt(0,10) + "");
-        eventList.add(event_a);
-
-        eventData event_b = new eventData("Event " + randInt(0,10) + "");
-        eventList.add(event_b);
-
-        eventData event_c = new eventData("Event " + randInt(0,10) + "");
-        eventList.add(event_c);
-
-        eventData event_d = new eventData("Event " + randInt(0,10) + "");
-        eventList.add(event_d);
+        for (int i = 0; i < randInt(1, ed.size()); i++){
+            int rand = randInt(0, ed.size() - 1);
+            eventList.add(ed.get(rand));
+            ed.remove(rand);
+        }
     }
 }
 
