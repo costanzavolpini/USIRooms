@@ -17,6 +17,7 @@ import com.usirooms.usirooms.events.dummyRoom;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import info.androidhive.recyclerview.roomAdapter;
 import info.androidhive.recyclerview.roomData;
@@ -73,8 +74,9 @@ public class FreeRooms extends Fragment {
 
          for (dummyRoom dr : MainActivity.rooms.getRooms()){
              final String favouriteBuilding = MainActivity.prefs.getString("favouriteBuilding", "Main Building");
-             if (dr.getBuilding().equals(favouriteBuilding)) {
-                 roomList.add(new roomData("Room " + dr.getName(), "From 8:30", "to 10:30"));
+             if ((dr.getBuilding().equals(favouriteBuilding)) && (randInt(0, 4) > 0)){
+                 int start = randInt(8, 10);
+                 roomList.add(new roomData("Room " + dr.getName(), "From " + start + ":" + randMin(), "to " + (start + randInt(1, 3)) + ":" + randMin()));
              }
          }
 
@@ -84,6 +86,28 @@ public class FreeRooms extends Fragment {
         super.onResume();
         recyclerView.setAdapter(rAdapter);
         rAdapter.notifyDataSetChanged();
+    }
+
+    public static int randInt(int min, int max) {
+
+        Random rand = new Random();
+
+        int randomNum = rand.nextInt((max - min) + 1) + min;
+
+        return randomNum;
+    }
+
+    public static String randMin() {
+
+        Random rand = new Random();
+
+        Boolean randBool = rand.nextBoolean();
+
+        if (randBool){
+            return "00";
+        }else{
+            return "30";
+        }
     }
 
 
