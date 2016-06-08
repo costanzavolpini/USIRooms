@@ -19,12 +19,16 @@ public class Events {
         JsonAnalyzer is = new JsonAnalyzer();
         events = new ArrayList<dummyEvent>();
 
+
+
         try {
             events.addAll(is.analyze("si008.json"));
 
             Log.i("INFO", String.valueOf(events.size()));
 
             Collections.sort(events, new DateTimeComparator());
+
+            getFreeRoom(System.currentTimeMillis(), System.currentTimeMillis() + 200, "Black Building");
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -62,7 +66,8 @@ public class Events {
             freeRooms.add(new dummyFreeRooms(dm));
         }
 
-        int position = binarySearch(events, 0, events.size() -1, start);
+        int position = binarySearch(events, start);
+
 
         Boolean follow = Boolean.TRUE;
         while(follow && position < events.size()){
@@ -114,25 +119,27 @@ public class Events {
     }
 
 
-    public static Integer binarySearch(ArrayList<dummyEvent> array, int lowerbound, int upperbound, long start) {
-        int position;
+    public static Integer binarySearch(ArrayList<dummyEvent> array, long start) {
+        int lowerbound = 0;
+        int upperbound = array.size() - 1;
 
-        position = (lowerbound + upperbound) / 2;
+        int half;
 
-        while(((array.get(position).getStart() > start) || (array.get(position).getStart() < start - 36000)) && (lowerbound <= upperbound)) {
-            if (array.get(position).getStart() > start) {
-                upperbound = position - 1;
-            } else {
-                lowerbound = position + 1;
+        while(lowerbound <= upperbound){
+            half = (int) Math.floor((lowerbound + upperbound) / 2);
+            if ((array.get(half).getStart() - 6000000 < start) && (array.get(half).getStart() + 6000000 > start)){
+                return half;
             }
-            position = (lowerbound + upperbound) / 2;
+
+            if (array.get(half).getStart() < start) {
+                lowerbound = half + 1;
+            }else{
+                upperbound = half -1;
+            }
         }
-        if (lowerbound <= upperbound) {
-            return position;
-        } else {
-            return null;
-        }
+        return -1;
     }
+
 
 }
 

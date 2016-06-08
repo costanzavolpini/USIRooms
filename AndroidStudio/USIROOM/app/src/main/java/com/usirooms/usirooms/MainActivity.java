@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     public static Rooms rooms = new Rooms();
-    public static Events events = new Events();
-    private SharedPreferences prefs;
+    // public static Events events = new Events();
+    public static SharedPreferences prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity
             Log.i("Info", "First active");
         }
 
-        final String favouriteBuilding = prefs.getString("favouriteBuilding", "Main Building");;
+        final String favouriteBuilding = prefs.getString("favouriteBuilding", "Main Building");
 
         Log.i("Theme", "Theme selected: " + favouriteBuilding);
 

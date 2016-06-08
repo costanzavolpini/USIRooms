@@ -1,6 +1,7 @@
 package com.usirooms.usirooms.dummy;
 
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -71,7 +72,10 @@ public class FreeRooms extends Fragment {
      private void prepareRoomData() {
 
          for (dummyRoom dr : MainActivity.rooms.getRooms()){
-             roomList.add(new roomData("Room " + dr.getName(), "From 8:30", "to 10:30"));
+             final String favouriteBuilding = MainActivity.prefs.getString("favouriteBuilding", "Main Building");
+             if (dr.getBuilding().equals(favouriteBuilding)) {
+                 roomList.add(new roomData("Room " + dr.getName(), "From 8:30", "to 10:30"));
+             }
          }
 
     }
