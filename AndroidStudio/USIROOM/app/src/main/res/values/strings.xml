@@ -68,13 +68,13 @@
     
     <!--On-Boarding-->
     <string name="name_app">USIRooms</string>
-    <string name="subtitle">Control of rooms in one tap</string>
+    <string name="subtitle">Room info just a touch away</string>
     <string name="free_rooms">Free Rooms</string>
-    <string name="free_rooms_sub">Easily find rooms available for studying</string>
+    <string name="free_rooms_sub">Empty rooms available on the go</string>
     <string name="by_event">By Event</string>
-    <string name="by_event_sub">Check all events and all courses</string>
+    <string name="by_event_sub">Check out what happens in the campus day by day</string>
     <string name="by_room">By Room</string>
-    <string name="by_room_sub">List of all USI rooms </string>
+    <string name="by_room_sub">Here you can find all the rooms you need</string>
     <string name="nav_explain">Navigation View</string>
     <string name="nav_explain_sub">Select your favourite building</string>
 
